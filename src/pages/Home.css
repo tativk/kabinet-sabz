@@ -171,11 +171,12 @@ background-size: cover;
 .home-hero-dots {
   position: absolute;
   z-index: 3;
-  right: 2.5%;
+  right: 50%;
   bottom: 15px;
   display: flex;
   align-items: center;
   gap: 12px;
+  transform: translateX(50%);
 }
 
 .home-hero-dots button {
@@ -248,11 +249,8 @@ background-size: cover;
   width: 76px;
   height: 76px;
   border-radius: 50%;
-  color: #e8b77e;
-  background: #41452b;
-  font-size: 42px;
-  font-weight: 400;
-  line-height: 1;
+  background: #363b22;
+  overflow: hidden;
 }
 
 .home-service-copy h3 {
@@ -350,42 +348,56 @@ background-size: cover;
 .home-about {
   position: relative;
   display: grid;
-  grid-template-columns: 1.65fr 1fr;
-  align-items: center;
-  min-height: 236px;
+  direction: ltr;
+  grid-template-columns: 62.3% 37.7%;
+  align-items: stretch;
+  min-height: 0;
   margin-top: 20px;
   overflow: hidden;
-
-  direction: ltr;
+  background-color: #F1DDC5;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home-about-image-wrap {
-  height: 236px;
-  overflow: hidden;
-  border-radius: 0 38px 38px 0;
-  clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 638 / 235;
+  height: auto;
+  overflow: visible;
+  border-radius: 0;
+  clip-path: none;
 }
 
 .home-about-image-wrap img {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   object-position: center;
+  border-radius: 0;
 }
 
 .home-about-content {
   position: relative;
-  z-index: 1;
-  padding: 18px 7% 18px 11%;
-  text-align: right;
-
+  z-index: 2;
   direction: rtl;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 22% 20px 7%;
+  text-align: right;
 }
 
 .home-about-content h2 {
   margin: 0 0 17px;
-  color: #342516;
-  font-size: clamp(19px, 2vw, 25px);
+  color: #2B1B14;
+  font-size: clamp(23px, 2.35vw, 29px);
+  line-height: 1.5;
   font-weight: 900;
 }
 
@@ -397,26 +409,17 @@ background-size: cover;
 
 .home-about-content p {
   margin: 0 0 22px;
-  color: #3d2c1c;
-  font-size: clamp(11px, 1.05vw, 13px);
-  line-height: 2.3;
+  color: #2B1B14;
+  font-size: clamp(13px, 1.25vw, 15px);
+  line-height: 2.25;
 }
 
 .home-about-content .home-gold-button {
-  min-width: 145px;
+  min-width: 158px;
+  align-self: flex-start;
 }
 
-.home-about-leaves {
-  position: absolute;
-  z-index: 0;
-  left: -10px;
-  bottom: -42px;
-  color: rgba(75, 86, 48, .42);
-  font-family: serif;
-  font-size: 170px;
-  transform: rotate(-35deg);
-  pointer-events: none;
-}
+.home-about-leaves { display: none; }
 
 .home-benefits {
   display: grid;
@@ -424,9 +427,10 @@ background-size: cover;
   min-height: 80px;
   padding: 10px max(38px, calc((100% - 1200px) / 2));
   color: #fff8ec;
-  background:
-    radial-gradient(ellipse at left center, rgba(146, 157, 91, .22), transparent 30%),
-    linear-gradient(90deg, #34391f, #42452a 50%, #30351e);
+background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #59634A;
 }
 
 .home-benefit-item {
@@ -435,7 +439,7 @@ background-size: cover;
   justify-content: center;
   gap: 14px;
   min-width: 0;
-  border-left: 1px solid rgba(255, 239, 213, .48);
+  border-left: 0;
 }
 
 .home-benefit-item:last-child {
@@ -448,6 +452,9 @@ background-size: cover;
 }
 
 .home-benefit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: #dfa565;
   font-size: 35px;
   line-height: 1;
@@ -485,13 +492,13 @@ background-size: cover;
 
 .home-process-icon {
   display: grid;
+  flex: 0 0 64px;
   place-items: center;
-  width: 58px;
-  height: 58px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  color: #89572c;
-  background: #f0d8bb;
-  font-size: 30px;
+  background: #F1D9BC;
+  overflow: hidden;
 }
 
 .home-process-number {
@@ -708,11 +715,17 @@ background-size: cover;
   }
 
   .home-about {
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 60% 40%;
   }
 
   .home-about-image-wrap {
-    height: 220px;
+    aspect-ratio: 638 / 235;
+    height: auto;
+  }
+
+  .home-about-content {
+    padding-right: 10%;
+    padding-left: 6%;
   }
 
   .home-benefits {
@@ -859,31 +872,38 @@ background-size: cover;
   .home-about {
     display: flex;
     flex-direction: column;
+    direction: ltr;
     margin-top: 20px;
     padding-bottom: 16px;
+    background-position: right center;
   }
 
   .home-about-image-wrap {
     width: 100%;
-    height: 210px;
-    border-radius: 0 28px 28px 0;
+    height: auto;
+    aspect-ratio: 638 / 235;
+    border-radius: 0;
     clip-path: none;
+  }
+
+  .home-about-image-wrap img {
+    object-fit: contain;
   }
 
   .home-about-content {
     width: 100%;
-    padding: 17px 20px 5px;
+    padding: 20px 22px 8px;
   }
 
   .home-about-content h2 {
-    margin-bottom: 8px;
-    font-size: 19px;
+    margin-bottom: 10px;
+    font-size: 22px;
   }
 
   .home-about-content p {
-    margin-bottom: 12px;
-    font-size: 11px;
-    line-height: 2;
+    margin-bottom: 14px;
+    font-size: 13px;
+    line-height: 2.15;
   }
 
   .home-about-leaves {
@@ -907,7 +927,7 @@ background-size: cover;
   }
 
   .home-benefit-item:nth-child(odd) {
-    border-left: 1px solid rgba(255, 239, 213, .35);
+    border-left: 0;
   }
 
   .home-benefit-item strong {
@@ -1013,4 +1033,34 @@ background-size: cover;
     min-height: 46px;
     font-size: 13px;
   }
+}
+
+
+/* Extracted reference icons - scoped to Home page */
+.home-service-icon img {
+  display: block;
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+}
+
+.home-benefit-icon img {
+  display: block;
+  width: 38px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.home-process-icon img {
+  display: block;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+/* About section refinements to match the supplied wireframe */
+.home-about-image-wrap::after { content: none; }
+.home-about-content h2 span {
+  display: inline-block;
+  transform: translateY(-1px);
 }
