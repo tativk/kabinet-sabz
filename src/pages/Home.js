@@ -6,46 +6,36 @@ export default function Home() {
 
   const slides = [
     {
+      image: "/images/Home/01-hero-kitchen-background.png",
       title: "کابینت سبز",
       subtitle: "زیبایی ماندگار در خانه شما",
       description: "طراحی اختصاصی، ساخت حرفه‌ای و اجرای دقیق",
       button: "درخواست مشاوره",
+      position: "center 53%",
     },
     {
-      title: "خانه‌ای زیباتر",
-      subtitle: "طراحی متناسب با سلیقه شما",
-      description: "از ایده تا اجرا، در کنار شما هستیم",
-      button: "شروع همکاری",
+      image: "/images/Home/02-hero-custom-design.png",
+      title: "طراحی اختصاصی",
+      subtitle: "متناسب با سلیقه و فضای شما",
+      description: "هر آشپزخانه، طراحی منحصربه‌فرد خودش را دارد",
+      button: "درخواست مشاوره",
+      position: "center 50%",
     },
     {
+      image: "/images/Home/03-hero-quality-material.png",
       title: "کیفیت ماندگار",
       subtitle: "جزئیات دقیق، نتیجه‌ای چشم‌نواز",
-      description: "انتخابی مطمئن برای فضای زندگی شما",
-      button: "مشاهده نمونه‌کارها",
+      description: "متریال باکیفیت و اجرای حرفه‌ای در تمام مراحل",
+      button: "درخواست مشاوره",
+      position: "center 48%",
     },
     {
+      image: "/images/Home/04-hero-dream-kitchen.png",
       title: "آشپزخانه رویایی",
-      subtitle: "ترکیب زیبایی، کیفیت و کارایی",
-      description: "طراحی و اجرای کابینت با استانداردهای روز",
+      subtitle: "زیبایی و آرامش در کنار هم",
+      description: "از ایده تا اجرا، همراه شما برای ساخت فضایی دلنشین",
       button: "درخواست مشاوره",
-    },
-    {
-      title: "کابینت اختصاصی",
-      subtitle: "هر فضا، یک طراحی منحصربه‌فرد",
-      description: "ساخته‌شده برای خانه و سبک زندگی شما",
-      button: "شروع همکاری",
-    },
-    {
-      title: "چوب سبز",
-      subtitle: "زیبایی در کنار آرامش",
-      description: "همراه شما در مسیر ساخت فضایی دلنشین",
-      button: "تماس با ما",
-    },
-    {
-      title: "طراحی تا اجرا",
-      subtitle: "با خیال آسوده به ما اعتماد کنید",
-      description: "از مشاوره اولیه تا تحویل نهایی پروژه",
-      button: "درخواست مشاوره",
+      position: "center 50%",
     },
   ];
 
@@ -112,7 +102,16 @@ export default function Home() {
     <main className="home-page" dir="rtl">
       {/* Hero */}
       <section className="home-hero">
-        <div className="home-hero-image" style={{ backgroundImage: "url(/images/Home/01-hero-kitchen-background.png)" }} />
+        <div
+          key={activeSlide}
+          className="home-hero-image"
+          style={{
+            backgroundImage: `url(${slides[activeSlide].image})`,
+            backgroundPosition: slides[activeSlide].position,
+          }}
+          role="img"
+          aria-label={slides[activeSlide].title}
+        />
         <div className="home-hero-shade" />
         <button
           className="home-hero-arrow home-hero-arrow-right"
@@ -162,16 +161,31 @@ export default function Home() {
           <h2>خدمات کابینت سبز</h2>
           <span />
         </div>
-        <div className="home-service-grid">
-          {services.map((service, index) => (
-            <article className="home-service-card" key={index}>
-              <div className="home-service-icon"><img src={service.icon} alt="" /></div>
-              <div className="home-service-copy">
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-              </div>
-            </article>
-          ))}
+        <div className="home-service-grid home-marquee home-marquee-services">
+          <div className="home-marquee-track home-marquee-track-right">
+            <div className="home-marquee-group">
+              {services.map((service, index) => (
+                <article className="home-service-card" key={`service-primary-${index}`}>
+                  <div className="home-service-icon"><img src={service.icon} alt="" /></div>
+                  <div className="home-service-copy">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <div className="home-marquee-group" aria-hidden="true">
+              {services.map((service, index) => (
+                <article className="home-service-card" key={`service-copy-${index}`}>
+                  <div className="home-service-icon"><img src={service.icon} alt="" /></div>
+                  <div className="home-service-copy">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -187,13 +201,25 @@ export default function Home() {
             مشاهده همه پروژه‌ها <b>←</b>
           </a>
         </div>
-        <div className="home-project-grid">
-          {projects.map((project, index) => (
-            <a className="home-project-card" href="#home-contact" key={index}>
-              <img src={project.image} alt={project.title} />
-              <span>{project.title}</span>
-            </a>
-          ))}
+        <div className="home-project-grid home-marquee home-marquee-projects">
+          <div className="home-marquee-track home-marquee-track-left">
+            <div className="home-marquee-group">
+              {projects.map((project, index) => (
+                <a className="home-project-card" href="#home-contact" key={`project-primary-${index}`}>
+                  <img src={project.image} alt={project.title} />
+                  <span>{project.title}</span>
+                </a>
+              ))}
+            </div>
+            <div className="home-marquee-group" aria-hidden="true">
+              {projects.map((project, index) => (
+                <a className="home-project-card" href="#home-contact" tabIndex={-1} key={`project-copy-${index}`}>
+                  <img src={project.image} alt="" />
+                  <span>{project.title}</span>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
