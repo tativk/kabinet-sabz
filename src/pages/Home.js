@@ -6,17 +6,91 @@ export default function Home() {
 
   // حرکت خودکار اسلایدر؛ با هر تغییر دستی، زمان‌سنج از ابتدا شروع می‌شود.
   useEffect(() => {
-    // اگر کاربر کاهش حرکت را در سیستم فعال کرده باشد، اسلایدر خودکار اجرا نمی‌شود.
-    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
-      return undefined;
-    }
-
     const autoplayTimer = window.setTimeout(() => {
       setActiveSlide((current) => (current + 1) % 4);
     }, 6500);
 
     return () => window.clearTimeout(autoplayTimer);
   }, [activeSlide]);
+
+  // Cinematic scroll reveal — sequential section queue.
+  // Sections reveal from top to bottom; a later section waits until the
+  // previous section has finished its gentle entrance. Existing marquee,
+  // hover and hero autoplay logic remain untouched.
+  useEffect(() => {
+    const groups = [
+      { root: ".home-services", selectors: [".home-section-heading", ".home-service-card"] },
+      { root: ".home-projects", selectors: [".home-section-title-row", ".home-project-card"] },
+      { root: ".home-about", selectors: [".home-about-image-wrap", ".home-about-content"] },
+      { root: ".home-benefits", selectors: [".home-benefit-item"] },
+      { root: ".home-process", selectors: [".home-section-heading", ".home-process-step"] },
+      { root: ".home-testimonials", selectors: [".home-section-heading", ".home-testimonial-card"] },
+      { root: ".home-cta", selectors: [".home-cta-photo", ".home-cta-content", ".home-cta-leaves"] },
+    ].map((group) => {
+      const root = document.querySelector(group.root);
+      const elements = root
+        ? group.selectors.flatMap((selector) => Array.from(root.querySelectorAll(selector)))
+            // Marquee duplicates are decorative copies; leave their continuous
+            // track animation entirely alone.
+            .filter((element) => !element.closest('[aria-hidden="true"]'))
+        : [];
+      return { ...group, root, elements, inView: false, started: false };
+    }).filter((group) => group.root && group.elements.length);
+
+    if (!groups.length) return undefined;
+
+    const reduceMotion = window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      groups.forEach(({ elements }) => elements.forEach((element) => element.classList.add("cinematic-visible")));
+      return undefined;
+    }
+
+    let activeIndex = 0;
+    let disposed = false;
+    let finishTimer = null;
+
+    const revealNext = () => {
+      if (disposed || activeIndex >= groups.length) return;
+      const group = groups[activeIndex];
+      if (!group.inView || group.started) return;
+
+      group.started = true;
+      group.elements.forEach((element, index) => {
+        element.classList.add("cinematic-reveal");
+        element.style.setProperty("--cinematic-delay", `${Math.min(index, 5) * 105}ms`);
+        element.classList.add("cinematic-visible");
+      });
+
+      // Let this section finish before allowing the next one to start.
+      const duration = 900 + Math.min(Math.max(group.elements.length - 1, 0), 5) * 105;
+      finishTimer = window.setTimeout(() => {
+        activeIndex += 1;
+        revealNext();
+      }, duration + 130);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const group = groups.find((item) => item.root === entry.target);
+        if (group) group.inView = entry.isIntersecting;
+      });
+      revealNext();
+    }, {
+      root: null,
+      threshold: 0.08,
+      rootMargin: "0px 0px -10% 0px",
+    });
+
+    groups.forEach(({ root }) => observer.observe(root));
+
+    return () => {
+      disposed = true;
+      observer.disconnect();
+      if (finishTimer !== null) window.clearTimeout(finishTimer);
+    };
+  }, []);
 
   const slides = [
     {
@@ -170,7 +244,11 @@ export default function Home() {
       <div
         className="home-hero-progress"
         key={`hero-progress-${activeSlide}`}
-        aria-hidden="true"
+        role="progressbar"
+        aria-label="زمان باقی‌مانده تا اسلاید بعدی"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
       >
         <span />
       </div>
