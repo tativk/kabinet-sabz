@@ -1,8 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
+
+  // حرکت خودکار اسلایدر؛ با هر تغییر دستی، زمان‌سنج از ابتدا شروع می‌شود.
+  useEffect(() => {
+    // اگر کاربر کاهش حرکت را در سیستم فعال کرده باشد، اسلایدر خودکار اجرا نمی‌شود.
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+      return undefined;
+    }
+
+    const autoplayTimer = window.setTimeout(() => {
+      setActiveSlide((current) => (current + 1) % 4);
+    }, 6500);
+
+    return () => window.clearTimeout(autoplayTimer);
+  }, [activeSlide]);
 
   const slides = [
     {
@@ -153,6 +167,13 @@ export default function Home() {
           ))}
         </div>
       </section>
+      <div
+        className="home-hero-progress"
+        key={`hero-progress-${activeSlide}`}
+        aria-hidden="true"
+      >
+        <span />
+      </div>
 
       {/* Services */}
       <section className="home-services home-section">

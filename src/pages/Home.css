@@ -193,6 +193,43 @@ background-size: cover;
   background: #fff8ec;
 }
 
+
+
+/* Hero autoplay progress — warm gold line matching Choub Sabz palette */
+.home-hero-progress {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  height: 4px;
+  overflow: hidden;
+  background: rgba(76, 77, 43, .16);
+  direction: rtl;
+}
+
+.home-hero-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 0 3px 0;
+  background: linear-gradient(90deg, #a96e36 0%, #d6a16a 48%, #edc28d 100%);
+  box-shadow: 0 0 8px rgba(190, 133, 75, .28);
+  transform: scaleX(0);
+  transform-origin: right center;
+  animation: home-hero-progress-fill 6.5s linear forwards;
+}
+
+@keyframes home-hero-progress-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-progress span {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+
 .home-services {
   padding-top: 17px;
 }
