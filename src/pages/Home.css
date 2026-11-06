@@ -1,13 +1,13 @@
 /* تمام استایل‌ها فقط به صفحه Home محدود شده‌اند. */
 .home-page {
-  --home-cream: #f8ead8;
-  --home-cream-light: #fff3e4;
-  --home-olive: #35391f;
-  --home-olive-dark: #292d19;
-  --home-brown: #75451f;
-  --home-gold: #bd8143;
-  --home-gold-light: #e5ad6b;
-  --home-text: #342516;
+  --home-cream: #F3EBDD;
+  --home-cream-light: #F3EBDD;
+  --home-olive: #59634A;
+  --home-olive-dark: #2B1B14;
+  --home-brown: #563824;
+  --home-gold: #AD794B;
+  --home-gold-light: #AD794B;
+  --home-text: #2B1B14;
   width: 100%;
   overflow: hidden;
   direction: rtl;
@@ -1063,4 +1063,765 @@ background-size: 100% 100%;
 .home-about-content h2 span {
   display: inline-block;
   transform: translateY(-1px);
+}
+
+
+
+/* =========================================================
+   CHOUB SABZ — RESPONSIVE LAYOUT
+   All rules are scoped to .home-page; palette remains unchanged.
+   Breakpoints: laptop 1024+, tablet 641–1023, mobile <=640.
+   ========================================================= */
+
+/* Keep the approved palette consistent at every viewport. */
+.home-page {
+  --home-espresso: #2B1B14;
+  --home-walnut: #563824;
+  --home-honey: #AD794B;
+  --home-bronze: #92704D;
+  --home-linen: #F3EBDD;
+  --home-stone: #E5D9C7;
+  --home-olive: #59634A;
+  color: var(--home-espresso);
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(255,255,255,.28), transparent 42%),
+    linear-gradient(180deg, #F3EBDD 0%, #E5D9C7 100%);
+}
+
+/* Tablet / compact laptop */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .home-page {
+    overflow-x: clip;
+  }
+
+  .home-section {
+    width: calc(100% - 48px);
+  }
+
+  .home-hero {
+    height: clamp(270px, 34vw, 350px);
+    min-height: 270px;
+  }
+
+  .home-hero-content {
+    top: 15%;
+    right: 5%;
+    width: min(46%, 410px);
+  }
+
+  .home-hero-content h1 {
+    font-size: clamp(32px, 4.2vw, 45px);
+  }
+
+  .home-hero-content h2 {
+    font-size: clamp(17px, 2.1vw, 22px);
+    margin-bottom: 14px;
+  }
+
+  .home-hero-content p {
+    font-size: 12px;
+    line-height: 1.9;
+    margin-bottom: 18px;
+  }
+
+  .home-service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .home-service-card {
+    min-width: 0;
+    min-height: 82px;
+    padding: 8px 13px;
+    gap: 12px;
+  }
+
+  .home-service-card:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 6px);
+    justify-self: center;
+  }
+
+  .home-service-icon {
+    flex-basis: 62px;
+    width: 62px;
+    height: 62px;
+  }
+
+  .home-service-icon img {
+    width: 46px;
+    height: 46px;
+  }
+
+  .home-service-copy h3 {
+    font-size: 14px;
+  }
+
+  .home-service-copy p {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .home-project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .home-project-card {
+    height: clamp(130px, 19vw, 175px);
+  }
+
+  .home-about {
+    grid-template-columns: 54% 46%;
+    min-height: 0;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .home-about-image-wrap {
+    align-self: center;
+    aspect-ratio: 638 / 300;
+    overflow: hidden;
+    border-radius: 34px 34px 0 0;
+    clip-path: polygon(0 0, 87% 0, 100% 100%, 0 100%);
+  }
+
+  .home-about-image-wrap img {
+    object-fit: cover;
+  }
+
+  .home-about-content {
+    padding: 22px 9% 22px 5%;
+  }
+
+  .home-about-content h2 {
+    font-size: clamp(21px, 2.5vw, 26px);
+    margin-bottom: 10px;
+  }
+
+  .home-about-content p {
+    font-size: 12px;
+    line-height: 2.05;
+    margin-bottom: 14px;
+  }
+
+  .home-about-content .home-gold-button {
+    min-width: 135px;
+    min-height: 40px;
+    font-size: 12px;
+  }
+
+  .home-benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 12px 28px;
+    row-gap: 8px;
+    background-size: cover;
+  }
+
+  .home-benefit-item {
+    min-height: 58px;
+    gap: 10px;
+  }
+
+  .home-benefit-item strong {
+    font-size: 13px;
+  }
+
+  .home-benefit-icon img {
+    width: 32px;
+    height: 36px;
+  }
+
+  .home-process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px 8px;
+    padding: 12px 8px 16px;
+  }
+
+  .home-process-chevron {
+    display: none;
+  }
+
+  .home-process-step p {
+    white-space: normal;
+    font-size: 11px;
+    line-height: 1.8;
+    padding-inline: 4px;
+  }
+
+  .home-testimonial-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .home-testimonial-card {
+    min-height: 126px;
+    gap: 9px;
+  }
+
+  .home-testimonial-card:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 5px);
+    justify-self: center;
+  }
+
+  .home-cta {
+    min-height: 165px;
+    margin-inline: 12px;
+    border-radius: 28px;
+  }
+
+  .home-cta-content {
+    gap: 18px;
+    padding-inline: 6%;
+  }
+
+  .home-cta-content h2 {
+    font-size: clamp(17px, 2.1vw, 22px);
+  }
+
+  .home-cta-button {
+    min-width: 165px;
+    min-height: 48px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile — works from 360px upward */
+@media (max-width: 640px) {
+  .home-page {
+    width: 100%;
+    overflow-x: clip;
+    background: var(--home-linen);
+  }
+
+  .home-section {
+    width: calc(100% - 28px);
+    max-width: 560px;
+  }
+
+  .home-hero {
+    height: clamp(285px, 82vw, 340px);
+    min-height: 285px;
+  }
+
+  .home-hero-image {
+    background-size: cover;
+    background-position: 43% center;
+  }
+
+  .home-hero-shade {
+    background: linear-gradient(
+      90deg,
+      rgba(43, 27, 20, .2) 0%,
+      rgba(43, 27, 20, .48) 34%,
+      rgba(43, 27, 20, .9) 100%
+    );
+  }
+
+  .home-hero-content {
+    top: 16%;
+    right: 8%;
+    width: 76%;
+    max-width: 360px;
+  }
+
+  .home-hero-content h1 {
+    font-size: clamp(30px, 8.8vw, 38px);
+    line-height: 1.3;
+    letter-spacing: -1px;
+  }
+
+  .home-hero-content h2 {
+    font-size: clamp(16px, 4.7vw, 19px);
+    line-height: 1.7;
+    margin: 3px 0 10px;
+  }
+
+  .home-hero-content p {
+    max-width: 100%;
+    font-size: clamp(10px, 3vw, 12px);
+    line-height: 1.9;
+    margin-bottom: 15px;
+    padding-top: 9px;
+  }
+
+  .home-hero-button {
+    min-width: 132px;
+    min-height: 39px;
+    padding: 8px 15px;
+    font-size: 11px;
+  }
+
+  .home-hero-arrow {
+    width: 28px;
+    height: 28px;
+    font-size: 22px;
+  }
+
+  .home-hero-arrow-right { right: 8px; }
+  .home-hero-arrow-left { left: 8px; }
+
+  .home-hero-dots {
+    right: 8%;
+    bottom: 12px;
+    gap: 9px;
+    transform: none;
+  }
+
+  .home-hero-dots button {
+    width: 7px;
+    height: 7px;
+  }
+
+  .home-services {
+    padding-top: 17px;
+  }
+
+  .home-section-heading {
+    gap: 9px;
+    margin-bottom: 13px;
+  }
+
+  .home-section-heading > span {
+    width: clamp(18px, 6vw, 30px);
+  }
+
+  .home-section-heading h2 {
+    font-size: clamp(16px, 4.5vw, 19px);
+    white-space: nowrap;
+  }
+
+  .home-service-grid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .home-service-card {
+    min-height: 76px;
+    padding: 7px 13px;
+    gap: 13px;
+    border-radius: 15px;
+  }
+
+  .home-service-icon {
+    flex: 0 0 58px;
+    width: 58px;
+    height: 58px;
+  }
+
+  .home-service-icon img {
+    width: 43px;
+    height: 43px;
+  }
+
+  .home-service-copy {
+    min-width: 0;
+  }
+
+  .home-service-copy h3 {
+    font-size: clamp(13px, 3.7vw, 15px);
+    line-height: 1.7;
+    margin-bottom: 3px;
+  }
+
+  .home-service-copy p {
+    font-size: clamp(10px, 3vw, 11px);
+    line-height: 1.7;
+  }
+
+  .home-projects {
+    padding-top: 19px;
+  }
+
+  .home-section-title-row {
+    display: flex;
+    justify-content: center;
+    min-height: 36px;
+    margin-bottom: 11px;
+  }
+
+  .home-section-title-row .home-section-heading {
+    position: static;
+    transform: none;
+    margin: 0;
+  }
+
+  .home-small-link {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 6px 8px;
+    gap: 4px;
+    font-size: 9px;
+    white-space: nowrap;
+  }
+
+  .home-project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .home-project-card {
+    height: clamp(112px, 34vw, 145px);
+    border-radius: 12px;
+  }
+
+  .home-project-card span {
+    right: 9px;
+    bottom: 8px;
+    font-size: 10px;
+  }
+
+  .home-about {
+    display: flex;
+    flex-direction: column;
+    direction: ltr;
+    margin-top: 19px;
+    padding: 0 0 14px;
+    background-color: #F1DDC5;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .home-about-image-wrap {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 638 / 235;
+    overflow: hidden;
+    border-radius: 0;
+    clip-path: none;
+  }
+
+  .home-about-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .home-about-content {
+    width: 100%;
+    padding: 17px 22px 5px;
+    direction: rtl;
+  }
+
+  .home-about-content h2 {
+    font-size: clamp(20px, 5.6vw, 23px);
+    line-height: 1.6;
+    margin: 0 0 8px;
+  }
+
+  .home-about-content h2 span {
+    font-size: 23px;
+    margin-left: 5px;
+  }
+
+  .home-about-content p {
+    font-size: clamp(12px, 3.5vw, 13px);
+    line-height: 2.1;
+    margin-bottom: 12px;
+  }
+
+  .home-about-content .home-gold-button {
+    min-width: 140px;
+    min-height: 40px;
+    align-self: flex-start;
+    font-size: 12px;
+  }
+
+  .home-benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3px 0;
+    min-height: 0;
+    padding: 9px 10px;
+    background-color: var(--home-olive);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .home-benefit-item {
+    justify-content: flex-start;
+    min-height: 52px;
+    padding: 5px 7px;
+    gap: 7px;
+    border: 0;
+  }
+
+  .home-benefit-item strong {
+    font-size: clamp(10px, 3vw, 12px);
+    line-height: 1.6;
+    white-space: normal;
+  }
+
+  .home-benefit-icon img {
+    width: 28px;
+    height: 32px;
+  }
+
+  .home-process {
+    padding-top: 17px;
+  }
+
+  .home-process .home-section-heading {
+    margin-bottom: 10px;
+  }
+
+  /* Compact vertical sequence: clear labels and no clipped chevrons. */
+  .home-process-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 5px 10px;
+    border-radius: 18px;
+    background: rgba(229, 217, 199, .36);
+  }
+
+  .home-process-step {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-height: 66px;
+    padding: 7px 4px;
+    text-align: right;
+    border-bottom: 1px solid rgba(146, 112, 77, .18);
+  }
+
+  .home-process-step:last-child {
+    border-bottom: 0;
+  }
+
+  .home-process-top {
+    flex: 0 0 58px;
+    min-height: 52px;
+    justify-content: flex-start;
+  }
+
+  .home-process-icon {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .home-process-icon img {
+    width: 33px;
+    height: 33px;
+  }
+
+  .home-process-number {
+    top: -1px;
+    right: 31px;
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+    border-width: 1px;
+  }
+
+  .home-process-chevron {
+    display: none;
+  }
+
+  .home-process-step p {
+    flex: 1;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.8;
+    white-space: normal;
+  }
+
+  .home-testimonials {
+    padding-top: 14px;
+  }
+
+  .home-testimonials .home-section-heading {
+    margin-bottom: 10px;
+  }
+
+  .home-testimonials .home-section-heading h2 {
+    font-size: clamp(13px, 3.8vw, 16px);
+  }
+
+  .home-testimonial-grid {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 2px 1px 12px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: #AD794B #E5D9C7;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .home-testimonial-card {
+    flex: 0 0 88%;
+    min-width: 0;
+    min-height: 116px;
+    gap: 10px;
+    padding: 7px;
+    border-radius: 14px;
+    scroll-snap-align: start;
+  }
+
+  .home-testimonial-card > img {
+    flex: 0 0 31%;
+    width: 31%;
+    min-height: 100px;
+  }
+
+  .home-stars {
+    font-size: 15px;
+  }
+
+  .home-testimonial-body > p {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .home-testimonial-person strong {
+    font-size: 10px;
+  }
+
+  .home-testimonial-person small {
+    font-size: 9px;
+  }
+
+  .home-cta {
+    display: flex;
+    min-height: 205px;
+    margin: 17px 8px 20px;
+    border-radius: 22px;
+  }
+
+  .home-cta-photo {
+    inset: 0;
+    width: 100%;
+    opacity: .28;
+    clip-path: none;
+  }
+
+  .home-cta::after {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    content: "";
+    background: rgba(43, 27, 20, .38);
+  }
+
+  .home-cta-content {
+    position: relative;
+    z-index: 1;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    padding: 22px 14px;
+    text-align: center;
+  }
+
+  .home-cta-content h2 {
+    font-size: clamp(17px, 5vw, 21px);
+    line-height: 1.9;
+  }
+
+  .home-cta-button {
+    min-width: 165px;
+    min-height: 44px;
+    padding: 9px 17px;
+    font-size: 12px;
+  }
+
+  .home-cta-leaves {
+    z-index: 0;
+    left: -30px;
+    bottom: -75px;
+    font-size: 130px;
+  }
+}
+
+/* Extra care for the narrowest supported phones (360–390px). */
+@media (max-width: 390px) {
+  .home-section {
+    width: calc(100% - 24px);
+  }
+
+  .home-hero {
+    height: 292px;
+    min-height: 292px;
+  }
+
+  .home-hero-content {
+    right: 7%;
+    width: 79%;
+  }
+
+  .home-hero-content h1 {
+    font-size: 31px;
+  }
+
+  .home-hero-content h2 {
+    font-size: 16px;
+  }
+
+  .home-hero-content p {
+    font-size: 10px;
+  }
+
+  .home-section-heading {
+    gap: 6px;
+  }
+
+  .home-section-heading > span {
+    width: 17px;
+  }
+
+  .home-section-heading h2 {
+    font-size: 15px;
+  }
+
+  .home-small-link {
+    font-size: 8px;
+    padding-inline: 6px;
+  }
+
+  .home-project-card {
+    height: 112px;
+  }
+
+  .home-benefit-item {
+    padding-inline: 5px;
+    gap: 5px;
+  }
+
+  .home-benefit-item strong {
+    font-size: 10px;
+  }
+
+  .home-testimonial-card {
+    flex-basis: 92%;
+  }
+}
+
+/* Larger desktop spacing — no palette or content changes. */
+@media (min-width: 1200px) {
+  .home-page {
+    max-width: 1920px;
+    margin-inline: auto;
+  }
+
+  .home-section {
+    width: min(100% - 76px, 1200px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page *,
+  .home-page *::before,
+  .home-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }
