@@ -2,13 +2,13 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import Home from "../pages/Home";
-import Dashboard from "../pages/Dashboard";
+import About from "../pages/About";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/Home" element={<Home />} />
+      <Route path="/About" element={<About />} />
     </Routes>
   );
 };
