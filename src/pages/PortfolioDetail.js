@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Portfolio.css";
+import "./PortfolioDetail.css";
 
 const projectImages = [
   "/images/Portfolio/portfolio-gallery-01.jpg",

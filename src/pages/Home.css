@@ -712,17 +712,6 @@ background-size: 100% 100%;
   font-size: 15px;
 }
 
-.home-cta-leaves {
-  position: absolute;
-  left: 8px;
-  bottom: -72px;
-  color: rgba(175, 183, 122, .45);
-  font-family: serif;
-  font-size: 190px;
-  transform: rotate(-30deg);
-  pointer-events: none;
-}
-
 @media (min-width: 1400px) {
   .home-hero {
     height: 390px;
