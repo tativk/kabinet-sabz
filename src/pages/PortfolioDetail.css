@@ -24,22 +24,28 @@
 .portfolio-page a { color: inherit; text-decoration: none; }
 .portfolio-page button { font: inherit; }
 
+/* =========================================
+   بخش هیرو (Hero Section) - اصلاح شده و کوچیک شده
+   ========================================= */
 .portfolio-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.85fr) minmax(300px, 1fr);
-  width: min(calc(100% - 40px), 1200px);
-  min-height: 414px;
+  /* تغییر عرض ستون‌ها برای ظاهر بهتر */
+  grid-template-columns: minmax(0, 1.3fr) minmax(300px, 1fr);
+  width: min(calc(100% - 40px), 1100px); /* عرض رو یکم کمتر کردم که تو چشم نزنه */
+  min-height: unset; /* حذف حداقل ارتفاع گنده */
   margin: 0 auto;
   overflow: hidden;
   border: 1px solid rgba(146,112,77,.13);
-  border-radius: 25px;
+  border-radius: 20px; /* گوشه‌ها ملایم‌تر */
   background: rgba(255,249,240,.58);
   direction: ltr;
-  box-shadow: 0 5px 18px rgba(86,56,36,.07);
+  box-shadow: 0 4px 15px rgba(86,56,36,.07);
 }
 .portfolio-hero-photo {
   position: relative;
-  min-height: 414px;
+  /* ارتفاع عکس رو اوردم پایین که کل صفحه رو نگیره */
+  height: 350px; 
+  min-height: unset;
   overflow: hidden;
   background: #81765c;
 }
@@ -47,25 +53,24 @@
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 414px;
-  object-fit: cover;
+  object-fit: cover; /* عکس رو قشنگ توی کادر جا می‌ده */
   object-position: center center;
 }
 .portfolio-fullscreen {
   position: absolute;
-  left: 24px;
+  left: 16px;
   right: auto;
-  bottom: 22px;
+  bottom: 16px;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  min-height: 35px;
-  padding: 7px 13px;
+  gap: 6px;
+  min-height: 30px;
+  padding: 5px 11px;
   border: 1px solid rgba(255,255,255,.2);
   border-radius: 30px;
   color: #fff8ed;
   background: rgba(43,27,20,.72);
-  font-size: 11px;
+  font-size: 10px;
   cursor: pointer;
   transition: background .2s ease, transform .2s ease;
 }
@@ -78,7 +83,7 @@
   flex-direction: column;
   align-items: stretch;
   min-width: 0;
-  padding: 23px 32px 24px;
+  padding: 20px 24px;
   background-color: #F7EBDD;
   background-repeat: no-repeat;
   background-position: center;
@@ -88,16 +93,22 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 9px;
-  min-height: 24px;
+  gap: 6px;
+  min-height: 22px;
   color: #6d5540;
-  font-size: 11px;
+  font-size: 10px;
   white-space: nowrap;
 }
 .portfolio-breadcrumb a { transition: color .2s ease; }
 .portfolio-breadcrumb a:hover { color: var(--portfolio-honey); }
 .portfolio-breadcrumb i { color: #9c8267; font-style: normal; }
-.portfolio-project-copy { margin-top: 26px; }
+
+.portfolio-project-copy { 
+  margin-top: 15px; 
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
 .portfolio-eyebrow {
   display: none;
   color: var(--portfolio-honey);
@@ -105,51 +116,58 @@
   font-weight: 700;
 }
 .portfolio-project-copy h1 {
-  margin: 0 0 18px;
+  margin: 0 0 10px;
   color: var(--portfolio-espresso);
-  font-size: clamp(23px, 2.2vw, 29px);
-  line-height: 1.5;
+  font-size: clamp(20px, 2vw, 26px); /* فونت عنوان کمی کوچیک‌تر */
+  line-height: 1.4;
   font-weight: 900;
-  letter-spacing: -.7px;
+  letter-spacing: -.5px;
 }
 .portfolio-project-copy p {
   max-width: 420px;
   margin: 0;
   color: #4e3a2a;
   font-size: 12px;
-  line-height: 2.15;
+  line-height: 2;
+  /* اگه متن طولانی بود، اسکرول نخوره، کوتاه بشه */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
+
 .portfolio-hero-specs {
   display: grid;
   gap: 0;
-  margin-top: 17px;
-  padding-top: 9px;
+  margin-top: 12px;
+  padding-top: 8px;
   border-top: 1px solid rgba(146,112,77,.32);
 }
 .portfolio-hero-spec {
   display: grid;
-  grid-template-columns: 22px minmax(105px, auto) 1fr;
+  grid-template-columns: 20px minmax(90px, auto) 1fr;
   align-items: center;
-  gap: 8px;
-  min-height: 34px;
+  gap: 6px;
+  min-height: 30px;
   color: #503a29;
-  font-size: 12px;
+  font-size: 11px;
 }
 .portfolio-spec-icon {
   display: grid;
-  width: 22px;
-  height: 24px;
+  width: 20px;
+  height: 22px;
   place-items: center;
   color: var(--portfolio-bronze);
 }
 .portfolio-spec-icon img {
   display: block;
-  width: 21px;
-  height: 23px;
+  width: 18px;
+  height: 20px;
   object-fit: contain;
 }
 .portfolio-hero-spec strong { font-weight: 800; }
 .portfolio-hero-spec > span:last-child { text-align: left; }
+
 .portfolio-hero-button {
   position: relative;
   z-index: 1;
@@ -157,19 +175,20 @@
   align-self: center;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  min-height: 39px;
-  margin-top: 17px;
-  padding: 9px 22px;
+  gap: 8px;
+  min-height: 36px;
+  margin-top: 15px;
+  padding: 8px 20px;
   border-radius: 28px;
   color: #fff9ef !important;
   background: var(--portfolio-olive);
-  box-shadow: 0 4px 12px rgba(43,27,20,.12);
+  box-shadow: 0 3px 10px rgba(43,27,20,.1);
   font-size: 11px;
   font-weight: 800;
   transition: transform .2s ease, background .2s ease;
 }
 .portfolio-hero-button:hover { transform: translateY(-2px); background: #46513a; }
+
 .portfolio-leaf-decoration {
   position: absolute;
   right: -4px;
@@ -182,10 +201,13 @@
   pointer-events: none;
 }
 
+/* =========================================
+   بقیه استایل‌ها (گالری، جزئیات، نظرات و ...) - دقیقاً بدون تغییر
+   ========================================= */
 .portfolio-gallery-section,
 .portfolio-reviews {
   width: min(calc(100% - 54px), 1160px);
-  margin: 13px auto 0;
+  margin: 20px auto 0; /* یه کم فاصله دادم بهش */
 }
 .portfolio-section-heading {
   display: flex;
@@ -413,7 +435,6 @@
   object-fit: fill;
   pointer-events: none;
 }
-/* Transparent, accessible click target placed exactly over the wireframe button. */
 .portfolio-cta-hotspot {
   position: absolute;
   left: 60.0%;
@@ -464,21 +485,21 @@
 .portfolio-lightbox-next { left: 20px; }
 .portfolio-lightbox-count { position: absolute; bottom: 20px; color: #fff; font-size: 13px; }
 
-/* Tablet */
+/* =========================================
+   بخش موبایل و تبلت (ریسپانسیو)
+   ========================================= */
 @media (max-width: 900px) {
-  .portfolio-hero { grid-template-columns: minmax(0, 1.45fr) minmax(275px, 1fr); min-height: 380px; }
-  .portfolio-hero-photo, .portfolio-hero-photo img { min-height: 380px; }
-  .portfolio-hero-info { padding: 20px 22px; }
-  .portfolio-project-copy { margin-top: 20px; }
-  .portfolio-project-copy h1 { font-size: 24px; margin-bottom: 10px; }
+  .portfolio-hero { grid-template-columns: minmax(0, 1.2fr) minmax(250px, 1fr); }
+  .portfolio-hero-photo { height: 320px; }
+  .portfolio-hero-info { padding: 16px 18px; }
+  .portfolio-project-copy h1 { font-size: 22px; }
   .portfolio-project-copy p { font-size: 11px; }
-  .portfolio-hero-spec { grid-template-columns: 19px minmax(88px, auto) 1fr; gap: 5px; font-size: 10px; }
-  .portfolio-hero-button { margin-top: 11px; padding-inline: 14px; font-size: 10px; }
+  .portfolio-hero-spec { grid-template-columns: 18px minmax(80px, auto) 1fr; font-size: 10px; }
+  .portfolio-hero-button { margin-top: 12px; padding-inline: 15px; font-size: 10px; }
   .portfolio-gallery-item { height: clamp(120px, 18vw, 160px); }
   .portfolio-review-card { grid-template-columns: minmax(190px, .9fr) minmax(0, 1.5fr); }
 }
 
-/* Mobile layout is intentionally rearranged, not simply scaled down. */
 @media (max-width: 640px) {
   .portfolio-page { padding-top: 10px; padding-bottom: 30px; }
   .portfolio-hero {
@@ -486,22 +507,26 @@
     flex-direction: column;
     width: calc(100% - 24px);
     min-height: 0;
-    border-radius: 19px;
+    border-radius: 15px;
   }
-  .portfolio-hero-photo { order: 0; min-height: 235px; height: 58vw; max-height: 310px; }
-  .portfolio-hero-photo img { min-height: 0; height: 100%; }
-  .portfolio-fullscreen { right: 12px; bottom: 12px; min-height: 32px; font-size: 10px; }
-  .portfolio-hero-info { order: 1; padding: 16px 18px 20px; }
-  .portfolio-breadcrumb { gap: 6px; font-size: 10px; }
-  .portfolio-project-copy { margin-top: 15px; }
-  .portfolio-project-copy h1 { margin-bottom: 7px; font-size: 23px; }
-  .portfolio-project-copy p { font-size: 11px; line-height: 2; }
-  .portfolio-hero-specs { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 10px; margin-top: 12px; padding-top: 8px; }
-  .portfolio-hero-spec { grid-template-columns: 18px 1fr; gap: 3px 6px; min-height: 43px; font-size: 10px; }
-  .portfolio-hero-spec > span:last-child { grid-column: 2; text-align: right; color: #84694d; font-size: 10px; }
-  .portfolio-spec-icon { grid-row: span 2; font-size: 16px; }
-  .portfolio-hero-button { align-self: flex-start; margin-top: 13px; min-height: 39px; font-size: 10px; }
-  .portfolio-leaf-decoration { font-size: 76px; bottom: -18px; }
+  /* در موبایل عکس بالای متن قرار می‌گیره و ارتفاعش کم میشه */
+  .portfolio-hero-photo { 
+    order: 0; 
+    height: 250px; 
+    width: 100%;
+  }
+  .portfolio-fullscreen { right: 12px; bottom: 12px; min-height: 30px; font-size: 9px; }
+  .portfolio-hero-info { order: 1; padding: 15px 15px 18px; }
+  .portfolio-breadcrumb { gap: 5px; font-size: 9px; }
+  .portfolio-project-copy { margin-top: 12px; }
+  .portfolio-project-copy h1 { margin-bottom: 6px; font-size: 20px; }
+  .portfolio-project-copy p { font-size: 11px; line-height: 1.9; }
+  .portfolio-hero-specs { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 10px; margin-top: 10px; padding-top: 8px; }
+  .portfolio-hero-spec { grid-template-columns: 16px 1fr; gap: 3px 5px; min-height: 38px; font-size: 9px; }
+  .portfolio-hero-spec > span:last-child { grid-column: 2; text-align: right; color: #84694d; font-size: 9px; }
+  .portfolio-spec-icon { grid-row: span 2; font-size: 14px; }
+  .portfolio-hero-button { align-self: flex-start; margin-top: 12px; min-height: 35px; font-size: 9px; }
+  
   .portfolio-gallery-section, .portfolio-reviews { width: calc(100% - 28px); margin-top: 20px; }
   .portfolio-section-heading { gap: 10px; margin-bottom: 12px; }
   .portfolio-section-heading > span { width: 12%; }
@@ -536,7 +561,7 @@
     border-radius: 17px;
   }
   .portfolio-review-person { gap: 11px; }
-  .portfolio-review-avatar { flex-basis: 66px; width: 66px; height: 66px; font-size: 20px; }
+  .portfolio-review-person img { flex-basis: 66px; width: 66px; height: 66px; }
   .portfolio-review-person h3 { font-size: 15px; }
   .portfolio-review-person span { font-size: 9px; }
   .portfolio-stars { font-size: 14px; }
@@ -553,18 +578,16 @@
   .portfolio-lightbox-next { left: 8px; }
 }
 
-/* Small phones */
 @media (max-width: 380px) {
   .portfolio-breadcrumb { font-size: 9px; gap: 4px; }
   .portfolio-hero-info { padding-inline: 14px; }
-  .portfolio-project-copy h1 { font-size: 21px; }
+  .portfolio-project-copy h1 { font-size: 18px; }
   .portfolio-section-heading h2 { font-size: 16px; }
   .portfolio-gallery-item { min-height: 100px; }
   .portfolio-detail-item h3 { font-size: 11px; }
 }
 
-
-/* Final wireframe alignment: home background, iconography and testimonial card. */
+/* Final wireframe alignment */
 .portfolio-page {
   background:
     radial-gradient(ellipse at 20% 20%, rgba(255,255,255,.28), transparent 42%),
@@ -753,20 +776,17 @@
   .portfolio-review-arrows button { width: 31px; height: 31px; font-size: 21px; }
 }
 
-/* Responsive refinement: portfolio detail */
 @media (max-width: 1024px) {
-  .portfolio-hero { width: calc(100% - 36px); grid-template-columns: minmax(0, 1.35fr) minmax(270px, 1fr); }
+  .portfolio-hero { width: calc(100% - 36px); grid-template-columns: minmax(0, 1.3fr) minmax(270px, 1fr); }
   .portfolio-gallery-section, .portfolio-reviews { width: calc(100% - 48px); }
   .portfolio-details { width: calc(100% - 48px); }
   .portfolio-gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 768px) {
-  .portfolio-hero { grid-template-columns: minmax(0, 1.15fr) minmax(245px, 1fr); min-height: 360px; }
-  .portfolio-hero-photo, .portfolio-hero-photo img { min-height: 360px; }
-  .portfolio-hero-info { padding: 18px 17px; }
-  .portfolio-project-copy h1 { font-size: 22px; }
-  .portfolio-hero-spec { grid-template-columns: 20px minmax(78px, auto) 1fr; font-size: 9px; }
+  .portfolio-hero { grid-template-columns: minmax(0, 1.1fr) minmax(245px, 1fr); }
+  .portfolio-hero-info { padding: 15px 15px; }
+  .portfolio-hero-spec { grid-template-columns: 18px minmax(70px, auto) 1fr; font-size: 9px; }
   .portfolio-gallery-section, .portfolio-reviews, .portfolio-details { width: calc(100% - 36px); }
   .portfolio-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
   .portfolio-gallery-item { height: clamp(135px, 24vw, 190px); }
@@ -781,19 +801,18 @@
 @media (max-width: 600px) {
   .portfolio-page { padding: 12px 0 30px; }
   .portfolio-hero { display: flex; flex-direction: column; width: calc(100% - 24px); min-height: 0; border-radius: 18px; }
-  .portfolio-hero-photo { order: 0; width: 100%; height: clamp(205px, 62vw, 300px); min-height: 0; }
-  .portfolio-hero-photo img { width: 100%; height: 100%; min-height: 0; object-fit: cover; }
-  .portfolio-fullscreen { left: 12px; bottom: 12px; min-height: 32px; padding: 6px 10px; font-size: 10px; }
-  .portfolio-hero-info { order: 1; padding: 15px 16px 19px; }
+  .portfolio-hero-photo { order: 0; width: 100%; height: 250px; min-height: 0; }
+  .portfolio-fullscreen { left: 12px; bottom: 12px; min-height: 30px; padding: 5px 9px; font-size: 9px; }
+  .portfolio-hero-info { order: 1; padding: 15px 15px 19px; }
   .portfolio-breadcrumb { overflow-x: auto; max-width: 100%; font-size: 9px; }
   .portfolio-project-copy { margin-top: 13px; }
-  .portfolio-project-copy h1 { margin-bottom: 7px; font-size: 21px; }
-  .portfolio-project-copy p { font-size: 10px; line-height: 2; }
+  .portfolio-project-copy h1 { margin-bottom: 7px; font-size: 19px; }
+  .portfolio-project-copy p { font-size: 10px; line-height: 1.9; }
   .portfolio-hero-specs { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 8px; margin-top: 11px; }
-  .portfolio-hero-spec { grid-template-columns: 18px minmax(0, 1fr); gap: 3px 5px; min-height: 45px; font-size: 9px; }
+  .portfolio-hero-spec { grid-template-columns: 16px minmax(0, 1fr); gap: 3px 4px; min-height: 40px; font-size: 9px; }
   .portfolio-hero-spec > span:last-child { grid-column: 2; text-align: right; font-size: 9px; }
-  .portfolio-spec-icon img { width: 18px; height: 19px; }
-  .portfolio-hero-button { align-self: flex-start; min-height: 37px; margin-top: 12px; padding-inline: 15px; font-size: 10px; }
+  .portfolio-spec-icon img { width: 16px; height: 17px; }
+  .portfolio-hero-button { align-self: flex-start; min-height: 35px; margin-top: 12px; padding-inline: 15px; font-size: 9px; }
   .portfolio-gallery-section, .portfolio-reviews { width: calc(100% - 28px); margin-top: 19px; }
   .portfolio-section-heading h2 { font-size: 17px; }
   .portfolio-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
@@ -825,9 +844,180 @@
 
 @media (max-width: 380px) {
   .portfolio-hero-info { padding-inline: 13px; }
-  .portfolio-project-copy h1 { font-size: 19px; }
+  .portfolio-project-copy h1 { font-size: 18px; }
   .portfolio-gallery-item { height: 112px; }
   .portfolio-details { padding-inline: 6px; }
   .portfolio-detail-item h3 { font-size: 10px; }
   .portfolio-review-date { left: 68px; }
+}
+
+/* =========================================
+   Customer Review Form - Compact Design
+   ========================================= */
+
+.portfolio-review-form {
+  direction: rtl;
+  width: min(calc(100% - 40px), 760px);
+  margin: 35px auto;
+  padding: 24px 28px;
+  border: 1px solid rgba(146,112,77,.2);
+  border-radius: 18px;
+  background: rgba(255,249,240,.75);
+  box-shadow: 0 5px 18px rgba(86,56,36,.07);
+}
+
+.portfolio-review-form .portfolio-section-heading {
+  margin-bottom: 15px;
+}
+
+.portfolio-review-form form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px 18px;
+  margin-top: 15px;
+}
+
+.portfolio-review-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.portfolio-review-form-group label {
+  color: var(--portfolio-espresso);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.portfolio-review-form-group input,
+.portfolio-review-form-group textarea {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1px solid rgba(146,112,77,.25);
+  border-radius: 9px;
+  outline: none;
+  background: #fffdf9;
+  color: var(--portfolio-espresso);
+  font-family: inherit;
+  font-size: 12px;
+  transition: .2s ease;
+}
+
+.portfolio-review-form-group input:focus,
+.portfolio-review-form-group textarea:focus {
+  border-color: var(--portfolio-olive);
+  box-shadow: 0 0 0 3px rgba(89,99,74,.1);
+}
+
+.portfolio-review-form-group textarea {
+  min-height: 85px;
+  resize: vertical;
+  line-height: 1.9;
+}
+
+.portfolio-review-form-group:nth-child(4) {
+  grid-column: 1 / -1;
+}
+
+/* Star Rating */
+
+.portfolio-rating-picker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 39px;
+}
+
+.portfolio-rating-stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.portfolio-rating-star {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #d7c7b3;
+  font-size: 27px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color .2s ease, transform .2s ease;
+}
+
+.portfolio-rating-star.active {
+  color: #e7a12d;
+}
+
+.portfolio-rating-star:hover {
+  transform: scale(1.18);
+}
+
+.portfolio-rating-star:focus-visible {
+  outline: 2px solid var(--portfolio-olive);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.portfolio-rating-value {
+  color: #806044;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Submit Button */
+
+.portfolio-review-submit {
+  grid-column: 1 / -1;
+  justify-self: start;
+  min-width: 145px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 25px;
+  background: var(--portfolio-olive);
+  color: #fff9ef;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.portfolio-review-submit:hover:not(:disabled) {
+  background: #46513a;
+  transform: translateY(-2px);
+}
+
+.portfolio-review-submit:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.portfolio-review-form form > .portfolio-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  .portfolio-review-form {
+    width: calc(100% - 28px);
+    margin: 25px auto;
+    padding: 19px 15px;
+  }
+
+  .portfolio-review-form form {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .portfolio-review-form-group:nth-child(4) {
+    grid-column: auto;
+  }
+
+  .portfolio-review-submit {
+    width: 100%;
+  }
 }
