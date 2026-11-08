@@ -2,11 +2,12 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import Home from "../pages/Home";
-
 import About from "../pages/About";
 import Services from "../pages/Services";
 import PortfolioListing from "../pages/PortfolioListing";
 import PortfolioDetail from "../pages/PortfolioDetail";
+import Contact from "../pages/Contact";
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -17,6 +18,8 @@ const AppRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/Portfolio" element={<PortfolioListing />} />
       <Route path="/portfolio/:slug" element={<PortfolioDetail />} />
+      <Route path="/Contact" element={<Contact />} />
+
 
 
     </Routes>
