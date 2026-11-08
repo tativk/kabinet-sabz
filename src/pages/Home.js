@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -189,13 +187,11 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <Header />
       <main className="home-page" dir="rtl">
         {/* Hero */}
         <section className="home-hero">
           <div
-            key={activeSlide}
+            key={`hero-image-${activeSlide}`}
             className="home-hero-image"
             style={{
               backgroundImage: `url(${slides[activeSlide].image})`,
@@ -221,7 +217,10 @@ export default function Home() {
           >
             ›
           </button>
-          <div className="home-hero-content" key={activeSlide}>
+          <div
+            className="home-hero-content"
+            key={`hero-content-${activeSlide}`}
+          >
             <h1>
               {slides[activeSlide].title.split(" ").slice(0, -1).join(" ")}{" "}
               <span>{slides[activeSlide].title.split(" ").slice(-1)}</span>
@@ -236,7 +235,7 @@ export default function Home() {
           <div className="home-hero-dots" aria-label="انتخاب اسلاید">
             {slides.map((slide, index) => (
               <button
-                key={index}
+                key={`hero-slide-${slide.image}`}
                 type="button"
                 aria-label={`رفتن به اسلاید ${index + 1}`}
                 className={activeSlide === index ? "active" : ""}
@@ -395,8 +394,11 @@ export default function Home() {
             <span />
           </div>
           <div className="home-testimonial-grid">
-            {testimonials.map((item, index) => (
-              <article className="home-testimonial-card" key={index}>
+                {testimonials.map((item) => (
+                  <article
+                    className="home-testimonial-card"
+                    key={`testimonial-${item.name}`}
+                  >
                 <img src={item.image} alt="نمونه پروژه مشتری" />
                 <div className="home-testimonial-body">
                   <div className="home-stars">★★★★★</div>
@@ -429,7 +431,5 @@ export default function Home() {
           <div className="home-cta-leaves" aria-hidden="true">❧</div>
         </section>
       </main>
-      <Footer />
-    </div>
   );
 }
