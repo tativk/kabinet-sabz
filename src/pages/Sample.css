@@ -1,0 +1,916 @@
+/* ==========================================================================
+   صفحه «نمونه رنگ و متریال» — Sample
+   همه کلاس‌ها با پیشوند smp- هستند تا با بقیه صفحات تداخل نکنند.
+   ========================================================================== */
+
+.smp {
+  --smp-cream: #fbeee0;
+  --smp-cream-2: #f4e6d5;
+  --smp-ink: #3b2113;
+  --smp-brown: #5a2c17;
+  --smp-muted: #6f5844;
+  --smp-line: rgba(140, 100, 62, 0.3);
+  --smp-green: #5a5a2b;
+  --smp-radius: 16px;
+  --smp-shadow: 0 8px 20px rgba(110, 68, 28, 0.14);
+  --smp-edge: 8px;
+
+  --smp-w: min(1420px, calc(100% - 112px));
+
+  width: 100%;
+  overflow-x: clip;
+  color: var(--smp-ink);
+  direction: rtl;
+  line-height: 1.8;
+}
+
+.smp-container {
+  width: var(--smp-w);
+  margin-inline: auto;
+}
+
+.smp *,
+.smp *::before,
+.smp *::after {
+  box-sizing: border-box;
+}
+
+.smp a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.smp img {
+  display: block;
+  max-width: 100%;
+}
+
+.smp :focus-visible {
+  outline: 3px solid #8a5a1f;
+  outline-offset: 3px;
+}
+
+.smp h1,
+.smp h2,
+.smp p,
+.smp :where(ul) {
+  margin: 0;
+  padding: 0;
+}
+
+/* ------------------------------ عنوان کوچک با خط ------------------------------ */
+
+.smp-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: clamp(13px, 1.45vw, 17px);
+  font-weight: 600;
+  color: var(--smp-muted);
+}
+
+.smp-eyebrow__line {
+  flex: 0 0 clamp(26px, 4vw, 44px);
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.smp-eyebrow--light {
+  color: rgba(251, 241, 226, 0.88);
+}
+
+.smp-eyebrow--light .smp-eyebrow__line {
+  background: #d9b67a;
+  opacity: 1;
+}
+
+/* ------------------------------ دکمه‌ی outline ------------------------------ */
+
+.smp-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-width: 156px;
+  padding: 10px 26px;
+  border: 1px solid var(--smp-brown);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--smp-brown);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.6;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.smp-outline:hover {
+  background: var(--smp-brown);
+  color: #fff6e9;
+  transform: translateY(-2px);
+}
+
+.smp-outline--light {
+  border-color: rgba(251, 241, 226, 0.85);
+  color: #fbf1e2;
+}
+
+.smp-outline--light:hover {
+  background: #fbf1e2;
+  color: var(--smp-green);
+}
+
+.smp-chevron {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+/* ================================== هیرو ================================== */
+
+.smp-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: clamp(260px, 28.4vw, 390px);
+  min-height: 260px;
+  overflow: hidden;
+  background: var(--smp-cream);
+}
+
+.smp-hero__media {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 60%;
+}
+
+.smp-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.smp-hero__text {
+  position: relative;
+  z-index: 1;
+  width: 40%;
+  padding: 20px clamp(28px, 5.2vw, 110px) 20px 12px;
+}
+
+.smp-hero__leaf {
+  position: absolute;
+  z-index: -1;
+  top: 3%;
+  left: 2%;
+  width: clamp(70px, 9vw, 120px);
+  color: rgba(176, 140, 104, 0.4);
+  opacity: 0.8;
+}
+
+.smp-hero__title {
+  margin-top: clamp(6px, 1vw, 14px);
+  font-size: clamp(44px, 5.8vw, 82px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--smp-brown);
+}
+
+.smp-hero__desc {
+  margin-top: clamp(10px, 1.8vw, 24px);
+  font-size: clamp(13px, 1.4vw, 18px);
+  line-height: 1.9;
+  color: var(--smp-muted);
+}
+
+.smp-hero__desc span {
+  display: block;
+}
+
+/* ================================== تب‌ها ================================== */
+
+.smp-tabs-wrap {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 26px);
+  margin: clamp(30px, 4vw, 44px) 0 clamp(28px, 4vw, 44px);
+}
+
+.smp-tabs-wrap__line {
+  flex: 1 1 0;
+  height: 1px;
+  background: var(--smp-line);
+}
+
+.smp-tabs {
+  display: flex;
+  align-items: center;
+  flex: 0 1 auto;
+  max-width: 100%;
+  padding: 7px;
+  border-radius: 999px;
+  background: var(--smp-cream-2);
+  box-shadow: inset 0 0 0 1px rgba(150, 110, 70, 0.1);
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+
+.smp-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.smp-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  padding: 12px clamp(18px, 2.6vw, 30px);
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--smp-muted);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  scroll-snap-align: center;
+  transition: background 0.25s, color 0.25s;
+}
+
+.smp-tab svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+
+/* خط جداکننده بین تب‌های غیرفعال */
+.smp-tab + .smp-tab:not(.is-active)::before {
+  content: "";
+  position: absolute;
+  inset-block: 26%;
+  right: -1px;
+  width: 1px;
+  background: var(--smp-line);
+}
+
+.smp-tab.is-active + .smp-tab::before,
+.smp-tab.is-active::before {
+  display: none;
+}
+
+.smp-tab:hover:not(.is-active) {
+  color: var(--smp-brown);
+}
+
+.smp-tab.is-active {
+  background: var(--smp-brown);
+  color: #fff4e4;
+  box-shadow: 0 6px 14px rgba(90, 44, 23, 0.28);
+}
+
+/* ============================== بخش‌های نمونه ============================== */
+
+.smp-block {
+  display: grid;
+  grid-template-columns: minmax(220px, 285px) minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "head cards"
+    "btn  cards";
+  column-gap: clamp(22px, 4vw, 56px);
+  margin-bottom: clamp(36px, 5vw, 60px);
+}
+
+.smp-block__head {
+  grid-area: head;
+  padding-top: clamp(14px, 3vw, 38px);
+}
+
+.smp-block__no {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--smp-ink);
+}
+
+.smp-block__no-line {
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+}
+
+.smp-block__title {
+  margin-top: 8px;
+  font-size: clamp(20px, 2.05vw, 25px);
+  font-weight: 800;
+  line-height: 1.6;
+  text-wrap: balance;
+  color: var(--smp-brown);
+}
+
+.smp-block__desc {
+  margin-top: 12px;
+  font-size: 14.5px;
+  line-height: 2.1;
+  color: var(--smp-muted);
+  text-wrap: balance;
+}
+
+.smp-block__desc span {
+  display: block;
+}
+
+.smp-block__btn {
+  grid-area: btn;
+  align-self: end;
+  justify-self: start;
+}
+
+/* اسلایدر */
+.smp-slider {
+  grid-area: cards;
+  position: relative;
+  min-width: 0;
+}
+
+.smp-block__cards {
+  --per: 4;
+  --gap: clamp(12px, 1.7vw, 20px);
+  display: flex;
+  gap: var(--gap);
+  margin: -8px calc(-1 * var(--smp-edge)) -14px;
+  padding: 8px var(--smp-edge) 22px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--smp-edge);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  list-style: none;
+}
+
+.smp-block__cards::-webkit-scrollbar {
+  display: none;
+}
+
+.smp-block__cards > .smp-card {
+  flex: 0 0 calc((100% - (var(--per) - 1) * var(--gap)) / var(--per));
+  scroll-snap-align: start;
+}
+
+.smp-slider__nav {
+  position: absolute;
+  top: 40%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fff6ea;
+  color: var(--smp-brown);
+  box-shadow: 0 8px 18px rgba(90, 44, 23, 0.24);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.smp-slider__nav .smp-chevron {
+  width: 20px;
+  height: 20px;
+}
+
+.smp-slider__nav--next {
+  left: 10px;
+}
+
+.smp-slider__nav--prev {
+  right: 10px;
+}
+
+.smp-slider__nav--prev .smp-chevron {
+  transform: rotate(180deg);
+}
+
+.smp-slider__nav:hover:not(:disabled) {
+  background: var(--smp-brown);
+  color: #fff6e9;
+}
+
+.smp-slider__nav:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.smp-slider__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.smp-slider__dot {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(90, 44, 23, 0.25);
+  cursor: pointer;
+  transition: width 0.25s, background 0.25s;
+}
+
+/* ناحیه لمس بزرگ‌تر برای موبایل */
+.smp-slider__dot::before {
+  content: "";
+  position: absolute;
+  inset: -10px -4px;
+}
+
+.smp-slider__dot.is-active {
+  width: 28px;
+  background: var(--smp-brown);
+}
+
+/* ------------------------------ کارت نمونه ------------------------------ */
+
+.smp-card {
+  overflow: hidden;
+  border-radius: var(--smp-radius);
+  background: #fcf3e8;
+  box-shadow: var(--smp-shadow);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.smp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 26px rgba(110, 68, 28, 0.2);
+}
+
+.smp-card__media {
+  position: relative;
+  aspect-ratio: 178 / 210;
+  overflow: hidden;
+}
+
+.smp-card__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.smp-card__label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 14px;
+}
+
+.smp-card__dot {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(60, 35, 15, 0.15);
+}
+
+.smp-card__name {
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--smp-ink);
+}
+
+/* ============================ بافت‌ها (بدون عکس) ============================ */
+
+.smp-tex--oak {
+  background:
+    repeating-linear-gradient(90deg, rgba(110, 60, 15, 0.1) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, transparent 0 11px, rgba(255, 236, 205, 0.2) 11px 13px, transparent 13px 24px),
+    repeating-linear-gradient(90deg, rgba(95, 52, 10, 0.09) 0 2px, transparent 2px 17px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.05)),
+    #d6a36d;
+}
+
+.smp-tex--walnut {
+  background:
+    repeating-linear-gradient(90deg, rgba(30, 10, 0, 0.18) 0 1px, transparent 1px 6px),
+    repeating-linear-gradient(90deg, transparent 0 13px, rgba(190, 120, 80, 0.2) 13px 15px, transparent 15px 29px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.1)),
+    #7b432b;
+}
+
+.smp-tex--linen {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(55% - 1px),
+      rgba(120, 90, 55, 0.28) calc(55% - 1px) 55%,
+      rgba(255, 255, 255, 0.55) 55% calc(55% + 1px),
+      transparent calc(55% + 1px)
+    ),
+    repeating-linear-gradient(90deg, rgba(160, 120, 70, 0.07) 0 1px, transparent 1px 5px),
+    linear-gradient(180deg, #f0dfc6, #e9d4b6);
+}
+
+.smp-tex--olive {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(32% - 1px),
+      rgba(30, 40, 15, 0.35) calc(32% - 1px) 32%,
+      rgba(255, 255, 255, 0.18) 32% calc(32% + 1px),
+      transparent calc(32% + 1px)
+    ),
+    repeating-linear-gradient(90deg, rgba(40, 50, 20, 0.12) 0 1px, transparent 1px 6px),
+    repeating-linear-gradient(90deg, transparent 0 15px, rgba(200, 210, 150, 0.1) 15px 17px, transparent 17px 31px),
+    #747a52;
+}
+
+.smp-tex--paper {
+  background:
+    repeating-linear-gradient(90deg, rgba(120, 90, 55, 0.14) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, transparent 0 9px, rgba(255, 245, 228, 0.35) 9px 10px, transparent 10px 18px),
+    linear-gradient(180deg, #e2cdb2, #d7bfa1);
+}
+
+.smp-tex--floral {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='%238f9570' opacity='.85'%3E%3Cellipse cx='14' cy='44' rx='11' ry='4' transform='rotate(-35 14 44)'/%3E%3Cellipse cx='50' cy='20' rx='11' ry='4' transform='rotate(40 50 20)'/%3E%3Cellipse cx='62' cy='86' rx='11' ry='4' transform='rotate(-30 62 86)'/%3E%3Cellipse cx='88' cy='54' rx='10' ry='4' transform='rotate(30 88 54)'/%3E%3C/g%3E%3Cg fill='%23ddd2b2' stroke='%237f7d58' stroke-width='.9'%3E%3Ccircle cx='30' cy='26' r='6'/%3E%3Ccircle cx='37' cy='31' r='6'/%3E%3Ccircle cx='34' cy='39' r='6'/%3E%3Ccircle cx='26' cy='39' r='6'/%3E%3Ccircle cx='23' cy='31' r='6'/%3E%3Ccircle cx='30' cy='33' r='3.4' fill='%23c9b277'/%3E%3Ccircle cx='74' cy='72' r='5'/%3E%3Ccircle cx='80' cy='76' r='5'/%3E%3Ccircle cx='78' cy='83' r='5'/%3E%3Ccircle cx='70' cy='83' r='5'/%3E%3Ccircle cx='68' cy='76' r='5'/%3E%3Ccircle cx='74' cy='78' r='2.8' fill='%23c9b277'/%3E%3C/g%3E%3C/svg%3E")
+      0 0 / 88px 88px,
+    linear-gradient(180deg, #ece1c9, #e4d6b8);
+}
+
+.smp-tex--marble-white {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240' preserveAspectRatio='none'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M-10 20C40 50 70 20 110 70S170 120 210 96' stroke='%23b9b4ae' stroke-width='1.3'/%3E%3Cpath d='M30 -10C60 60 110 80 96 140S120 210 150 250' stroke='%23c9a35c' stroke-width='1'/%3E%3Cpath d='M-10 150C50 130 80 170 130 150S190 170 210 200' stroke='%23c4bfb9' stroke-width='1.1'/%3E%3Cpath d='M96 140C130 120 150 90 190 70' stroke='%23d3ae6a' stroke-width='.8'/%3E%3Cpath d='M70 20C80 45 110 55 135 40' stroke='%23d0cbc5' stroke-width='.9'/%3E%3Cpath d='M20 190C60 200 90 230 120 250' stroke='%23c9a35c' stroke-width='.8'/%3E%3C/g%3E%3C/svg%3E")
+      center / 100% 100% no-repeat,
+    radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.9), transparent 60%),
+    linear-gradient(160deg, #f6f4f1, #e6e2dd);
+}
+
+.smp-tex--marble-black {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240' preserveAspectRatio='none'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M-10 30C30 60 70 30 100 80S160 140 210 110' stroke='%23c9953f' stroke-width='1.4'/%3E%3Cpath d='M40 -10C50 50 100 70 90 130S130 200 160 250' stroke='%23d9a850' stroke-width='1.1'/%3E%3Cpath d='M-10 170C40 140 90 190 140 160S190 180 210 210' stroke='%23b9873a' stroke-width='1.2'/%3E%3Cpath d='M90 130C130 110 160 80 200 50' stroke='%23e0b35f' stroke-width='.9'/%3E%3Cpath d='M20 90C40 110 70 120 80 150' stroke='%23a9773a' stroke-width='.8'/%3E%3Cpath d='M130 20C140 50 170 60 190 40' stroke='%23c9953f' stroke-width='.8'/%3E%3C/g%3E%3C/svg%3E")
+      center / 100% 100% no-repeat,
+    radial-gradient(ellipse at 70% 80%, rgba(120, 80, 40, 0.25), transparent 60%),
+    linear-gradient(160deg, #241a15, #15100d);
+}
+
+/* =============================== بنر تماس =============================== */
+
+.smp-cta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 183px;
+  margin: 22px 8px 35px;
+  padding: 20px 7% 20px 44%;
+  overflow: hidden;
+  border-radius: 34px;
+  background: linear-gradient(100deg, #34391f, #41452a 60%, #30351e);
+  color: #fbf1e2;
+}
+
+.smp-cta__media {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 42%;
+  overflow: hidden;
+  clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
+}
+
+.smp-cta__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.smp-cta__leaf {
+  position: absolute;
+  right: -1%;
+  bottom: -8%;
+  height: 92%;
+  width: auto;
+  color: rgba(222, 178, 104, 0.6);
+  pointer-events: none;
+}
+
+.smp-cta__text {
+  position: relative;
+  z-index: 1;
+}
+
+.smp-cta__title {
+  margin-top: 6px;
+  font-size: clamp(24px, 3.1vw, 38px);
+  font-weight: 800;
+  line-height: 1.5;
+  color: #fbf1e2;
+}
+
+.smp-cta__btn {
+  position: relative;
+  z-index: 1;
+  min-width: 160px;
+}
+
+/* ============================== ریسپانسیو ============================== */
+
+/* تبلت */
+@media (max-width: 1000px) {
+  .smp-block {
+    grid-template-columns: minmax(170px, 200px) minmax(0, 1fr);
+    column-gap: 22px;
+  }
+
+  .smp-block__title {
+    font-size: 21px;
+  }
+
+  .smp-block__cards {
+    --per: 3;
+  }
+
+  .smp-card__media {
+    aspect-ratio: 4 / 5.2;
+  }
+
+  .smp-card__name {
+    font-size: 13.5px;
+  }
+
+  .smp-card__label {
+    padding: 11px 10px;
+    gap: 8px;
+  }
+
+  .smp-card__dot {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* تبلت کوچک و موبایل: هیرو و بخش‌ها تک‌ستونه می‌شوند */
+@media (max-width: 820px) {
+  .smp-hero {
+    display: block;
+    min-height: 0;
+    border-radius: 22px;
+  }
+
+  .smp-hero__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .smp-hero__text {
+    width: 100%;
+    padding: 22px 22px 28px;
+  }
+
+  .smp-hero__leaf {
+    top: 12px;
+    left: 14px;
+    width: 64px;
+  }
+
+  .smp-hero__title {
+    font-size: clamp(46px, 14vw, 72px);
+  }
+
+  .smp-hero__desc {
+    font-size: 15px;
+  }
+
+  .smp-block {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "head"
+      "cards"
+      "btn";
+    row-gap: 18px;
+  }
+
+  .smp-block__cards {
+    --per: 2;
+    --gap: 14px;
+  }
+
+  .smp-slider__nav {
+    display: none;
+  }
+
+  .smp-block__head {
+    padding-top: 0;
+  }
+
+  .smp-block__desc span {
+    display: inline;
+  }
+
+  .smp-block__btn {
+    justify-self: stretch;
+    width: 100%;
+  }
+
+  .smp-hero__desc span {
+    display: inline;
+  }
+
+  .smp-card__name {
+    font-size: 14.5px;
+  }
+
+  /* بنر تماس */
+  .smp-cta {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    min-height: 0;
+    padding: 0 0 24px;
+    border-radius: 22px;
+  }
+
+  .smp-cta__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent);
+    mask-image: linear-gradient(to bottom, #000 62%, transparent);
+  }
+
+  .smp-cta__leaf {
+    top: auto;
+    bottom: 14px;
+    left: -10px;
+    right: auto;
+    height: 110px;
+    opacity: 0.7;
+  }
+
+  .smp-cta__text {
+    padding: 0 22px;
+    margin-top: -22px;
+  }
+
+  .smp-cta__btn {
+    margin: 18px 22px 0;
+  }
+}
+
+/* موبایل */
+@media (max-width: 700px) {
+  .smp-card {
+    border-radius: 18px;
+  }
+
+  .smp-card__media {
+    aspect-ratio: 4 / 5.2;
+  }
+
+  .smp-card__label {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .smp-card__name {
+    font-size: 15.5px;
+  }
+
+  .smp-card__dot {
+    width: 18px;
+    height: 18px;
+  }
+
+  .smp-tabs-wrap__line {
+    display: none;
+  }
+
+  .smp-tabs-wrap {
+    margin: 24px 0 26px;
+  }
+
+  .smp-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+    width: 100%;
+    padding: 6px;
+    border-radius: 24px;
+    overflow: visible;
+  }
+
+  .smp-tab {
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    padding: 11px 6px;
+    border-radius: 18px;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .smp-tab::before {
+    display: none !important;
+  }
+
+  .smp-tab svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .smp-block__title {
+    font-size: 21px;
+  }
+}
+
+/* موبایل‌های کوچک */
+@media (max-width: 420px) {
+  .smp-hero__text {
+    padding: 18px 18px 24px;
+  }
+
+  .smp-tab {
+    padding: 10px 4px;
+    font-size: 12px;
+  }
+
+  .smp-outline {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 520px) {
+  .smp-block__cards {
+    --per: 1;
+  }
+
+  .smp-card__media {
+    aspect-ratio: 4 / 5.2;
+  }
+}
+
+/* عرض صفحه همیشه هم‌اندازه با هدر سایت */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .smp { --smp-w: calc(100% - 72px); }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .smp { --smp-w: calc(100% - 40px); }
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .smp { --smp-w: calc(100% - 24px); }
+}
+
+@media (max-width: 359px) {
+  .smp { --smp-w: calc(100% - 20px); }
+}
+
+@media (max-width: 820px) {
+  .smp-hero {
+    width: var(--smp-w);
+    height: auto;
+    margin-inline: auto;
+    box-shadow: 0 12px 30px rgba(89, 54, 27, 0.1);
+  }
+
+  .smp-cta {
+    width: var(--smp-w);
+    margin: 0 auto clamp(24px, 4vw, 48px);
+    justify-content: flex-start;
+  }
+
+  .smp-cta__media {
+    clip-path: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smp * {
+    transition: none !important;
+  }
+}
