@@ -427,65 +427,7 @@ const Contact = () => {
       </section>
 
 
-      {/* سوالات متداول */}
-      <section className="contact-faq-section reveal-item">
-
-        <div className="contact-faq-header">
-
-          <div>
-
-            <h2>سوالات متداول تماس و پشتیبانی</h2>
-
-            <p>پاسخ به سوالات رایج شما</p>
-
-          </div>
-
-          <a href="#contact-form">
-            مشاهده فرم تماس
-            <FiArrowLeft />
-          </a>
-
-        </div>
-
-
-        <div className="contact-faq-grid">
-
-          {faqs.map((faq, index) => (
-
-            <div
-              className={`contact-faq-item ${
-                openFaq === index ? "active" : ""
-              }`}
-              key={index}
-            >
-
-              <button
-                type="button"
-                className="contact-faq-question"
-                onClick={() =>
-                  setOpenFaq(openFaq === index ? null : index)
-                }
-              >
-
-                <span>{faq.question}</span>
-
-                <FiChevronDown />
-
-              </button>
-
-              <div className="contact-faq-answer">
-
-                <p>{faq.answer}</p>
-
-              </div>
-
-            </div>
-
-          ))}
-
-        </div>
-
-      </section>
+      
 
 
       {/* بنر پایانی صفحه */}
