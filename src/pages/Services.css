@@ -837,19 +837,8 @@
   object-position: center;
 }
 
-.services-cta__overlay {
-  position: absolute;
-  z-index: -1;
 
-  inset: 0;
 
-  background: linear-gradient(
-    90deg,
-    rgba(44, 50, 30, 0.08),
-    rgba(44, 50, 30, 0.84) 58%,
-    rgba(44, 50, 30, 0.94)
-  );
-}
 
 .services-cta__content {
   display: flex;
@@ -857,13 +846,13 @@
   min-height: 175px;
 
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
 
   gap: 13px;
 
   padding: 25px 7%;
-  padding-right: 44%;
+ 
 
   color: white;
 }

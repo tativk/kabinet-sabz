@@ -150,17 +150,7 @@ export default function Services() {
 
         <div className="services-hero__content">
 
-          <div className="services-breadcrumb">
-
-            <a href="/" aria-label="صفحه اصلی">
-              <FiHome />
-            </a>
-
-            <span>خانه</span>
-            <span>›</span>
-            <span>خدمات</span>
-
-          </div>
+          
 
           <h1>
             خدمات کابینت <span>سبز</span>
@@ -433,14 +423,10 @@ export default function Services() {
           aria-hidden="true"
         />
 
-        <div className="services-cta__overlay"></div>
-
         <div className="services-cta__content">
 
           <h2>
-            برای دریافت مشاوره و ثبت سفارش،
-            <br />
-            همین حالا با ما در ارتباط باشید.
+            برای دریافت مشاوره و ثبت سفارش همین الان با ارتباط برقرار بکنید.
           </h2>
 
           <a
