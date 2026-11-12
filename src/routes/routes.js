@@ -7,6 +7,8 @@ import Services from "../pages/Services";
 import PortfolioListing from "../pages/PortfolioListing";
 import PortfolioDetail from "../pages/PortfolioDetail";
 import Contact from "../pages/Contact";
+import HomeOriginal  from "../pages/HomeOriginal";
+import Products  from "../pages/Products";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +21,9 @@ const AppRoutes = () => {
       <Route path="/Portfolio" element={<PortfolioListing />} />
       <Route path="/portfolio/:slug" element={<PortfolioDetail />} />
       <Route path="/Contact" element={<Contact />} />
+      <Route path="/HomeOriginal" element={<HomeOriginal />} />
+      <Route path="/Products" element={<Products />} />
+
 
 
 
