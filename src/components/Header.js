@@ -33,7 +33,7 @@ const searchablePages = [
   { label: "خدمات", description: "مشاهده خدمات چوب سبز", to: "/Services" },
   { label: "پروژه‌ها و نمونه‌کارها", description: "گالری پروژه‌های اجراشده", to: "/Portfolio" },
   { label: "درباره ما", description: "آشنایی با مجموعه چوب سبز", to: "/About" },
-  { label: "تماس با ما", description: "ارتباط و درخواست مشاوره", to: "/#home-contact" },
+  { label: "تماس با ما", description: "ارتباط و درخواست مشاوره", to: "/Contact" },
 ];
 
 export default function Header() {
@@ -58,7 +58,7 @@ export default function Header() {
     setProjectsOpen(false);
     setSearchOpen(false);
 
-    if (location.pathname === "/" && location.hash === "#home-contact") {
+    if (location.pathname === "/" && location.hash === "/Contact") {
       const timer = window.setTimeout(() => {
         document.getElementById("home-contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 80);
@@ -135,11 +135,11 @@ export default function Header() {
           </div>
         ))}
 
-        <Link className="cs-header__nav-link cs-header__contact-link" to="/#home-contact">
+        <Link className="cs-header__nav-link cs-header__contact-link" to="/Contact">
           تماس با ما
         </Link>
 
-        <Link className="cs-header__mobile-cta" to="/#home-contact">
+        <Link className="cs-header__mobile-cta" to="/Contact">
           درخواست مشاوره <Icon name="chat" size={18} />
         </Link>
       </nav>
