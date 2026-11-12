@@ -32,7 +32,7 @@ const quickLinks = [
   ["خدمات", "/Services"],
   ["پروژه‌ها", "/Portfolio"],
   ["درباره ما", "/About"],
-  ["تماس با ما", "/#home-contact"],
+  ["تماس با ما", "/Contact"],
 ];
 
 function SocialLinks({ mobile = false }) {

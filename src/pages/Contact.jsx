@@ -402,7 +402,7 @@ const Contact = () => {
 
             <h2>محدوده فعالیت</h2>
 
-            <FiMapPin />
+            <FiMapPin className="animated-map-pin" />
 
           </div>
 

@@ -754,7 +754,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding: 25px 30px;
   color: white;
   background:
@@ -1171,5 +1171,23 @@ animation: hourRotation 60s linear infinite;}
 
   to {
     transform: translate(-50%, -100%) rotate(360deg);
+  }
+}
+/* پین نقشه متحرک بخش محدوده فعالیت */
+.animated-map-pin {
+  display: inline-block;
+  flex-shrink: 0;
+  color: var(--green);
+  font-size: 26px;
+  transform-origin: center center;
+  animation: mapPinSpin 6s linear infinite;
+}
+
+@keyframes mapPinSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
