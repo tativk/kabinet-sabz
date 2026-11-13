@@ -1,43 +1,84 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
+import { FiHeart } from "react-icons/fi";
+import { FaHeart } from "react-icons/fa";
 import "./HomeOriginal.css";
 
-/* ------------------------------------------------------------------ */
-/*  داده‌ها — آدرس عکس‌ها و لینک‌ها را بعداً خودتان جایگزین کنید        */
-/* ------------------------------------------------------------------ */
 
-const SLIDE_INTERVAL = 3000; // ۳ ثانیه
+const SLIDE_INTERVAL = 5000; 
 
 // فعلاً هر پنج اسلاید یک عکس دارند؛ بعداً عوض کنید
-const slides = [1, 2, 3, 4, 5].map((id) => ({
-  id,
-  image: "./baner22.png", // TODO: عکس اسلاید
-  badge: "چوب سبز، انتخاب ماندگار",
-  titleMain: "محصولات چوبی آماده",
-  titleSub: "زیبایی و دوام در کنار هم",
-  text: "انواع محصولات چوبی با طراحی مدرن و کیفیت بالا برای تکمیل دکوراسیون فضای شما",
-  buttonText: "مشاهده محصولات",
-  link: "", // TODO: لینک دکمه اسلاید
-}));
+const slides = [
+  {
+    id: 1,
+    image: "./baner22.png",
+    badge: "چوب سبز، انتخاب ماندگار",
+    titleMain: "محصولات چوبی آماده",
+    titleSub: "زیبایی و دوام در کنار هم",
+    text: "انواع محصولات چوبی با طراحی مدرن و کیفیت بالا برای تکمیل دکوراسیون فضای شما",
+    buttonText: "مشاهده محصولات",
+    link: "",
+  },
+  {
+    id: 2,
+    image: "./baner66.png",
+    badge: "طراحی خاص و متفاوت",
+    titleMain: "زیبایی در جزئیات",
+    titleSub: "انتخابی برای خانه شما",
+    text: "محصولات چوبی با طراحی منحصربه‌فرد و کیفیت ساخت بالا",
+    buttonText: "مشاهده محصولات",
+    link: "",
+  },
+  {
+    id: 3,
+    image: "./baner77.png",
+    badge: "کیفیت ماندگار",
+    titleMain: "ترکیب هنر و طبیعت",
+    titleSub: "چوب، همیشه زیباست",
+    text: "با محصولات چوبی، فضای زندگی خود را زیباتر کنید",
+    buttonText: "مشاهده محصولات",
+    link: "",
+  },
+  {
+    id: 4,
+    image: "./baner88.png",
+    badge: "انتخابی هوشمندانه",
+    titleMain: "دکوراسیون مدرن",
+    titleSub: "هماهنگی در فضای خانه",
+    text: "محصولاتی کاربردی و زیبا برای تکمیل دکوراسیون شما",
+    buttonText: "مشاهده محصولات",
+    link: "",
+  },
+  {
+    id: 5,
+    image: "./baner99.png",
+    badge: "همراه با طبیعت",
+    titleMain: "خانه‌ای گرم و دلنشین",
+    titleSub: "با محصولات چوب سبز",
+    text: "تجربه کیفیت و زیبایی با محصولات متنوع چوبی",
+    buttonText: "مشاهده محصولات",
+    link: "",
+  },
+];
 
 const categories = [
-  { id: 1, title: "میز جلو مبلی", image: "", link: "" },
-  { id: 2, title: "قفسه دیواری", image: "", link: "" },
-  { id: 3, title: "میز تلویزیون", image: "", link: "" },
-  { id: 4, title: "قفسه و استند", image: "", link: "" },
-  { id: 5, title: "کمد و درب چوبی", image: "", link: "" },
-  { id: 6, title: "میز و صندلی", image: "", link: "" },
-  { id: 7, title: "دکور چوبی", image: "", link: "" },
-  { id: 8, title: "اکسسوری چوبی", image: "", link: "" },
+  { id: 1, title: "میز جلو مبلی", image: "./mize.jpg", link: "" },
+  { id: 2, title: "قفسه دیواری", image: "./ghafasehdivari.jpg", link: "" },
+  { id: 3, title: "میز تلویزیون", image: "./televizion.jpg", link: "" },
+  { id: 4, title: "قفسه و استند", image: "./ghafasehestand.jpg", link: "" },
+  { id: 5, title: "کمد و درب چوبی", image: "./komod.jpg", link: "" },
+  { id: 6, title: "میز و صندلی", image: "./moble.jpg", link: "" },
+  { id: 7, title: "دکور چوبی", image: "./decore.jpg", link: "" },
+  { id: 8, title: "اکسسوری چوبی", image: "./saat.jpg", link: "" },
 ]; // TODO: image و link هر دسته‌بندی
 
 const bestSellers = [
-  { id: 1, title: "میز تلویزیون مدرن", rating: 4.8, price: "۸,۹۹۰,۰۰۰", oldPrice: "۹,۹۹۰,۰۰۰", image: "", link: "" },
-  { id: 2, title: "کتابخانه چوبی کلاسیک", rating: 4.7, price: "۷,۹۹۰,۰۰۰", oldPrice: "۹,۹۹۰,۰۰۰", image: "", link: "" },
-  { id: 3, title: "میز جلو مبلی گرد", rating: 4.6, price: "۹,۹۹۰,۰۰۰", oldPrice: "۷,۱۹۹,۰۰۰", image: "", link: "" },
-  { id: 4, title: "کمد چوبی مدرن", rating: 4.5, price: "۱,۹۹۰,۰۰۰", oldPrice: "۹۹۰,۰۰۰", image: "", link: "" },
-  { id: 5, title: "قفسه دیواری مینیمال", rating: 4.7, price: "۱,۹۹۰,۰۰۰", oldPrice: "۲,۹۹۰,۰۰۰", image: "", link: "" },
-  { id: 6, title: "میز نهارخوری چوبی", rating: 4.8, price: "۱,۹۹۰,۰۰۰", oldPrice: "۲,۹۹۰,۰۰۰", image: "", link: "" },
+  { id: 1, title: "میز تلویزیون مدرن", rating: 4.8, price: "۸,۹۹۰,۰۰۰", oldPrice: "۹,۹۹۰,۰۰۰", image: "/product/mizteleviz.png", link: "" },
+  { id: 2, title: "کتابخانه چوبی کلاسیک", rating: 4.7, price: "۷,۹۹۰,۰۰۰", oldPrice: "۹,۹۹۰,۰۰۰", image: "/product/ketabkhaneh.png", link: "" },
+  { id: 3, title: "میز جلو مبلی گرد", rating: 4.6, price: "۹,۹۹۰,۰۰۰", oldPrice: "۷,۱۹۹,۰۰۰", image: "/product/mizejolomobli.png", link: "" },
+  { id: 4, title: "کمد چوبی مدرن", rating: 4.5, price: "۱,۹۹۰,۰۰۰", oldPrice: "۹۹۰,۰۰۰", image: "/product/komodeghobi.png", link: "" },
+  { id: 5, title: "قفسه دیواری مینیمال", rating: 4.7, price: "۱,۹۹۰,۰۰۰", oldPrice: "۲,۹۹۰,۰۰۰", image: "/product/ghafase.png", link: "" },
+  { id: 6, title: "میز نهارخوری چوبی", rating: 4.8, price: "۱,۹۹۰,۰۰۰", oldPrice: "۲,۹۹۰,۰۰۰", image: "/product/mizenahar.png", link: "" },
 ]; // TODO: image و link هر محصول؛ قیمت‌ها نمونه هستند
 
 const promoBanners = [
@@ -47,7 +88,7 @@ const promoBanners = [
     title: "مشاوره تخصصی طراحی و خرید",
     text: "برای انتخاب بهتر، با کارشناسان ما در ارتباط باشید.",
     buttonText: "درخواست مشاوره",
-    image: "", // TODO: عکس بنر مشاوره
+    image: "./moshaver.png", 
     link: "",
   },
   {
@@ -56,7 +97,7 @@ const promoBanners = [
     title: "رنگ مناسب، زیبایی بیشتر",
     text: "با کاتالوگ رنگ چوب سبز، رنگ دلخواه خود را انتخاب کنید.",
     buttonText: "مشاهده کاتالوگ رنگ",
-    image: "", // TODO: عکس بنر کاتالوگ رنگ
+    image: "./moshaver.png", 
     link: "",
   },
 ];
@@ -121,7 +162,7 @@ function ProductCard({ product }) {
         aria-label="افزودن به علاقه‌مندی‌ها"
         aria-pressed={liked}
       >
-        {liked ? "♥" : "♡"}
+        {liked ? <FaHeart /> : <FiHeart />}
       </button>
       <Link to={to(product.link)} className="product-card__link">
         <div className="product-card__img">
@@ -149,13 +190,17 @@ export default function Home() {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  const next = useCallback(() => setCurrent((i) => (i + 1) % slides.length), []);
-  const prev = useCallback(
-    () => setCurrent((i) => (i - 1 + slides.length) % slides.length),
-    []
-  );
+  const next = useCallback(
+  () => setCurrent((i) => (i - 1 + slides.length) % slides.length),
+  []
+);
 
-  // تغییر خودکار اسلاید هر ۳ ثانیه
+const prev = useCallback(
+  () => setCurrent((i) => (i + 1) % slides.length),
+  []
+);
+
+  // تغییر خودکار اسلاید هر 5 ثانیه
   useEffect(() => {
     if (paused) return undefined;
     const timer = setInterval(next, SLIDE_INTERVAL);
@@ -198,10 +243,10 @@ export default function Home() {
           </div>
 
           <button type="button" className="hero__nav hero__nav--next" onClick={next} aria-label="اسلاید بعدی">
-            <Arrow dir="left" />
+            <Arrow dir="right" />
           </button>
           <button type="button" className="hero__nav hero__nav--prev" onClick={prev} aria-label="اسلاید قبلی">
-            <Arrow dir="right" />
+            <Arrow dir="left" />
           </button>
 
           <div className="hero__dots" role="tablist">

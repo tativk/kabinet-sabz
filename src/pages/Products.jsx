@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { FiHeart } from "react-icons/fi";
+import { FaHeart } from "react-icons/fa";
 import "./Products.css";
 
 /* ------------------------------------------------------------------ */
@@ -133,7 +134,7 @@ function ProductCard({ product, list }) {
           aria-pressed={liked}
           aria-label="افزودن به علاقه‌مندی‌ها"
         >
-          {liked ? "♥" : "♡"}
+          {liked ? <FaHeart /> : <FiHeart />}
         </button>
         {badge && <span className={`badge ${badge.className}`}>{badge.text}</span>}
       </div>
