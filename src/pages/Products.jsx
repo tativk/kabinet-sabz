@@ -1,19 +1,27 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { FiHeart } from "react-icons/fi";
-import { FaHeart } from "react-icons/fa";
+import {
+  FiHeart,
+  FiHome,
+  FiSliders,
+  FiChevronUp,
+  FiShoppingCart,
+  FiGrid,
+  FiList,
+  FiRefreshCw,
+} from "react-icons/fi";
+import { FaHeart, FaStar } from "react-icons/fa";
 import "./Products.css";
 
 /* ------------------------------------------------------------------ */
-/*  داده‌ها — آدرس عکس‌ها و لینک‌ها را بعداً خودتان جایگذاری کنید        */
+/*  داده‌ها                                                            */
 /* ------------------------------------------------------------------ */
 
-const SLIDE_INTERVAL = 3000; // ۳ ثانیه
+const SLIDE_INTERVAL = 3000;
 
-// فعلاً هر پنج اسلاید یک عکس دارند؛ بعداً عوض کنید
 const heroSlides = [1, 2, 3, 4, 5].map((id) => ({
   id,
-  image: "/images/baner22.png", // TODO: عکس اسلاید
+  image: "/baner22.png",
 }));
 
 const PRICE_MIN = 1000000;
@@ -49,21 +57,20 @@ const badges = {
   sale: { text: "تخفیف ویژه", className: "badge--sale" },
 };
 
-// TODO: image و link هر محصول؛ مقادیر زیر نمونه هستند
 const products = [
-  { id: 6, title: "صندلی راحتی مدرن", rating: 4.8, price: 2990000, badge: "new", category: "sofa", colors: ["olive"], inStock: true, image: "", link: "" },
-  { id: 5, title: "میز جلو مبلی گرد", rating: 4.7, price: 2990000, badge: "best", category: "tv", colors: ["oak"], inStock: true, image: "", link: "" },
-  { id: 4, title: "میز تلویزیون مدرن", rating: 4.8, price: 4990000, oldPrice: 5990000, badge: "sale", category: "tv", colors: ["walnut", "oak"], inStock: true, image: "", link: "" },
-  { id: 3, title: "قفسه دیواری مینیمال", rating: 4.6, price: 2990000, category: "wardrobe", colors: ["oak", "beige"], inStock: true, image: "", link: "" },
-  { id: 2, title: "کمد جادار چوبی", rating: 4.7, price: 4990000, category: "wardrobe", colors: ["walnut"], inStock: false, image: "", link: "" },
-  { id: 1, title: "میز ناهارخوری چوبی", rating: 4.8, price: 6990000, category: "tv", colors: ["oak", "gray"], inStock: true, image: "", link: "" },
+  { id: 6, title: "صندلی راحتی مدرن", rating: 4.8, price: 2990000, badge: "new", category: "sofa", colors: ["olive"], inStock: true, image: "./moble.jpg", link: "" },
+  { id: 5, title: "میز جلو مبلی گرد", rating: 4.7, price: 2990000, badge: "best", category: "tv", colors: ["oak"], inStock: true, image: "/product/mizejolomobli.png", link: "" },
+  { id: 4, title: "میز تلویزیون مدرن", rating: 4.8, price: 4990000, oldPrice: 5990000, badge: "sale", category: "tv", colors: ["walnut", "oak"], inStock: true, image: "/product/mizteleviz.png", link: "" },
+  { id: 3, title: "قفسه دیواری مینیمال", rating: 4.6, price: 2990000, category: "wardrobe", colors: ["oak", "beige"], inStock: true, image: "/product/ghafase.png", link: "" },
+  { id: 2, title: "کمد جادار چوبی", rating: 4.7, price: 4990000, category: "wardrobe", colors: ["walnut"], inStock: false, image: "/product/komod.png", link: "" },
+  { id: 1, title: "میز ناهارخوری چوبی", rating: 4.8, price: 6990000, category: "tv", colors: ["oak", "gray"], inStock: true, image: "/product/mizenahar.png", link: "" },
 ];
 
 /* ------------------------------------------------------------------ */
 /*  ابزارها و کامپوننت‌های کمکی                                        */
 /* ------------------------------------------------------------------ */
 
-const to = (link) => link || "#"; // لینک خالی خطا نمی‌دهد
+const to = (link) => link || "#";
 const fa = (n) => n.toLocaleString("fa-IR");
 
 function Arrow() {
@@ -89,8 +96,10 @@ function Stars({ rating }) {
         const fill = Math.max(0, Math.min(1, rating - (n - 1)));
         return (
           <span key={n} className="star">
-            <span className="star__fill" style={{ width: `${fill * 100}%` }}>★</span>
-            ★
+            <span className="star__fill" style={{ width: `${fill * 100}%` }}>
+              <FaStar aria-hidden="true" />
+            </span>
+            <FaStar aria-hidden="true" />
           </span>
         );
       })}
@@ -109,7 +118,10 @@ function FilterGroup({ title, children }) {
         aria-expanded={open}
       >
         <span>{title}</span>
-        <span className={`filter-group__chev ${open ? "is-open" : ""}`} aria-hidden="true">⌃</span>
+        <FiChevronUp
+          className={`filter-group__chev ${open ? "is-open" : ""}`}
+          aria-hidden="true"
+        />
       </button>
       {open && <div className="filter-group__body">{children}</div>}
     </div>
@@ -134,7 +146,7 @@ function ProductCard({ product, list }) {
           aria-pressed={liked}
           aria-label="افزودن به علاقه‌مندی‌ها"
         >
-          {liked ? <FaHeart /> : <FiHeart />}
+          {liked ? <FaHeart aria-hidden="true" /> : <FiHeart aria-hidden="true" />}
         </button>
         {badge && <span className={`badge ${badge.className}`}>{badge.text}</span>}
       </div>
@@ -150,11 +162,17 @@ function ProductCard({ product, list }) {
           {sale && <del className="p-card__old">{fa(product.oldPrice)}</del>}
         </div>
         <div className="p-card__actions">
-          <button type="button" className="p-card__cart" aria-label="افزودن به سبد خرید" disabled={!product.inStock}>
-            🛒
+          <button
+            type="button"
+            className="p-card__cart"
+            aria-label="افزودن به سبد خرید"
+            disabled={!product.inStock}
+          >
+            <FiShoppingCart aria-hidden="true" />
           </button>
           <Link to={to(product.link)} className="btn btn--block">
-            مشاهده جزئیات
+            <span className="btn-text btn-text--long">مشاهده جزئیات</span>
+            <span className="btn-text btn-text--short">جزئیات</span>
             <Arrow />
           </Link>
         </div>
@@ -178,16 +196,14 @@ const emptyFilters = {
 const toggle = (arr, id) => (arr.includes(id) ? arr.filter((x) => x !== id) : [...arr, id]);
 
 export default function Products() {
-  /* ---- اسلایدر هیرو ---- */
   const [slide, setSlide] = useState(0);
   useEffect(() => {
     const t = setInterval(() => setSlide((i) => (i + 1) % heroSlides.length), SLIDE_INTERVAL);
     return () => clearInterval(t);
   }, []);
 
-  /* ---- فیلتر، مرتب‌سازی، نمایش ---- */
-  const [draft, setDraft] = useState(emptyFilters); // تغییرات فرم
-  const [applied, setApplied] = useState(emptyFilters); // فیلتر اعمال‌شده
+  const [draft, setDraft] = useState(emptyFilters);
+  const [applied, setApplied] = useState(emptyFilters);
   const [sort, setSort] = useState("newest");
   const [view, setView] = useState("grid");
 
@@ -215,7 +231,6 @@ export default function Products() {
 
   return (
     <>
-
       <main className="shop" dir="rtl">
         {/* ---------------- هیرو ---------------- */}
         <section className="shop-hero" aria-label="محصولات چوب سبز">
@@ -230,7 +245,6 @@ export default function Products() {
             ))}
           </div>
 
-          {/* پنل سبز با لبه‌ی منحنی (جداکننده‌ی متن و عکس) */}
           <svg
             className="shop-hero__curve"
             viewBox="0 0 100 100"
@@ -242,7 +256,9 @@ export default function Products() {
 
           <div className="shop-hero__text">
             <nav className="breadcrumb" aria-label="مسیر صفحه">
-              <Link to="/" className="breadcrumb__home">⌂ خانه</Link>
+              <Link to="/" className="breadcrumb__home">
+                <FiHome aria-hidden="true" /> خانه
+              </Link>
               <span aria-hidden="true">‹</span>
               <span>فروشگاه</span>
             </nav>
@@ -259,10 +275,9 @@ export default function Products() {
 
         {/* ---------------- فیلتر + لیست محصولات ---------------- */}
         <section className="container shop-layout">
-          {/* ===== فیلتر ===== */}
           <aside className="filters" aria-label="فیلتر محصولات">
             <h2 className="filters__title">
-              <span>▽</span> فیلتر محصولات
+              <FiSliders aria-hidden="true" /> فیلتر محصولات
             </h2>
 
             <FilterGroup title="دسته‌بندی محصولات">
@@ -350,8 +365,13 @@ export default function Products() {
               </label>
             </FilterGroup>
 
-            <button type="button" className="btn btn--block filters__apply" onClick={() => setApplied(draft)}>
-              اعمال فیلترها ↻
+            <button
+              type="button"
+              className="btn btn--block filters__apply"
+              onClick={() => setApplied(draft)}
+            >
+              اعمال فیلترها
+              <FiRefreshCw aria-hidden="true" />
             </button>
             <button
               type="button"
@@ -365,7 +385,6 @@ export default function Products() {
             </button>
           </aside>
 
-          {/* ===== محصولات ===== */}
           <div className="listing">
             <div className="toolbar">
               <label className="toolbar__sort">
@@ -385,7 +404,7 @@ export default function Products() {
                   aria-label="نمایش شبکه‌ای"
                   aria-pressed={view === "grid"}
                 >
-                  ▦
+                  <FiGrid aria-hidden="true" />
                 </button>
                 <button
                   type="button"
@@ -394,7 +413,7 @@ export default function Products() {
                   aria-label="نمایش لیستی"
                   aria-pressed={view === "list"}
                 >
-                  ☰
+                  <FiList aria-hidden="true" />
                 </button>
               </div>
             </div>
@@ -428,12 +447,11 @@ export default function Products() {
               </Link>
             </div>
             <div className="cta__img">
-              {/* TODO: عکس بنر پایین را اینجا بگذارید، مثال: <img src="/images/cta.png" alt="" /> */}
+              <img src="/baner44.png" alt="" />
             </div>
           </div>
         </section>
       </main>
-
     </>
   );
 }

@@ -98,7 +98,6 @@
   background: var(--green-deep);
 }
 
-/* عکس‌های اسلایدر در سمت چپ، زیر پنل سبز */
 .shop .shop-hero__slides {
   position: absolute;
   inset: 0;
@@ -119,7 +118,6 @@
   opacity: 1;
 }
 
-/* پنل سبز با لبه‌ی منحنی؛ این خط کج، متن و عکس را از هم جدا می‌کند */
 .shop .shop-hero__curve {
   position: absolute;
   inset: 0;
@@ -130,7 +128,6 @@
   filter: drop-shadow(-6px 0 14px rgba(0, 0, 0, 0.25));
 }
 
-/* متن‌ها روی پنل سبز و سمت راست */
 .shop .shop-hero__text {
   position: absolute;
   z-index: 2;
@@ -140,7 +137,7 @@
   width: min(40%, 460px);
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* در RTL یعنی سمت راست */
+  align-items: flex-start;
   justify-content: center;
   padding-top: 8px;
   color: #f3e4cf;
@@ -156,6 +153,12 @@
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.06);
   font-size: 13px;
+}
+
+.shop .breadcrumb__home {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .shop .shop-hero__title {
@@ -240,6 +243,7 @@
   color: var(--muted);
   transform: rotate(180deg);
   transition: transform 0.2s;
+  font-size: 18px;
 }
 
 .shop .filter-group__chev.is-open {
@@ -312,7 +316,7 @@
   box-shadow: 0 0 0 2px var(--wood);
 }
 
-/* اسلایدر قیمت (دو دستگیره) */
+/* اسلایدر قیمت */
 .shop .range {
   position: relative;
   height: 24px;
@@ -434,6 +438,8 @@
 }
 
 .shop .toolbar__view button {
+  display: grid;
+  place-items: center;
   width: 38px;
   height: 38px;
   border: 0;
@@ -451,9 +457,9 @@
 /* ================= شبکه‌ی محصولات ================= */
 .shop .grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  padding: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  padding: 10px;
   border-radius: 22px;
   background: rgba(246, 230, 211, 0.45);
 }
@@ -511,7 +517,7 @@
   aspect-ratio: 1 / 0.82;
   border-radius: 14px;
   overflow: hidden;
-  background: linear-gradient(160deg, #f4e3cf, #ecd3b6); /* تا زمان جایگذاری عکس */
+  background: linear-gradient(160deg, #f4e3cf, #ecd3b6);
 }
 
 .shop .p-card__img img {
@@ -526,10 +532,12 @@
   left: 18px;
   width: 32px;
   height: 32px;
+  display: grid;
+  place-items: center;
   border: 0;
   border-radius: 50%;
   background: #fff;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1;
   color: var(--ink);
   cursor: pointer;
@@ -551,17 +559,9 @@
   font-weight: 700;
 }
 
-.shop .badge--new {
-  background: #5d7a3a;
-}
-
-.shop .badge--best {
-  background: #d9792b;
-}
-
-.shop .badge--sale {
-  background: #d0343c;
-}
+.shop .badge--new { background: #5d7a3a; }
+.shop .badge--best { background: #d9792b; }
+.shop .badge--sale { background: #d0343c; }
 
 .shop .p-card__info {
   display: flex;
@@ -588,21 +588,34 @@
 .shop .stars {
   direction: ltr;
   display: inline-flex;
+  align-items: center;
+  gap: 2px;
   font-size: 15px;
-  letter-spacing: 1px;
 }
 
 .shop .star {
   position: relative;
+  display: inline-flex;
+  align-items: center;
   color: #e6d5c0;
+}
+
+.shop .star svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
 }
 
 .shop .star__fill {
   position: absolute;
-  inset: 0 auto 0 0;
+  top: 0;
+  left: 0;
+  height: 100%;
   overflow: hidden;
   color: #f29c1f;
-  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
 }
 
 .shop .p-card__prices {
@@ -635,16 +648,19 @@
 
 .shop .p-card__actions .btn {
   flex: 1;
+  white-space: nowrap;
 }
 
 .shop .p-card__cart {
+  display: grid;
+  place-items: center;
   width: 42px;
   height: 42px;
   flex-shrink: 0;
   border: 1px solid rgba(164, 95, 45, 0.25);
   border-radius: 50%;
   background: var(--cream-deep);
-  font-size: 17px;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -653,27 +669,64 @@
   cursor: not-allowed;
 }
 
-/* ================= بنر پایین ================= */
+/* متن کوتاه دکمه فقط در تبلت نمایش داده می‌شود */
+.shop .btn-text--short {
+  display: none;
+}
+
+/* ================= بنر پایین (CTA) ================= */
 .shop .cta {
   position: relative;
-  display: flex;
-  align-items: stretch;
-  min-height: 250px;
+  display: block;
+  min-height: 280px;
   margin-bottom: 48px;
   border-radius: 28px;
   overflow: hidden;
-  background: linear-gradient(135deg, #f6e1c9, #ecc9a4);
+  background: var(--cream-deep);
+}
+
+.shop .cta__img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.shop .cta__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.shop .cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to left,
+    rgba(253, 246, 238, 0.82) 0%,
+    rgba(253, 246, 238, 0.6) 25%,
+    rgba(253, 246, 238, 0.25) 55%,
+    rgba(253, 246, 238, 0) 85%
+  );
 }
 
 .shop .cta__body {
   position: relative;
-  z-index: 1;
-  flex: 1 1 52%;
+  z-index: 2;
+  max-width: 55%;
+  min-height: 280px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   padding: 28px 40px;
+  background: transparent;
 }
 
 .shop .cta__title {
@@ -692,23 +745,37 @@
   color: var(--muted);
 }
 
-.shop .cta__img {
-  flex: 1 1 48%;
-}
-
-.shop .cta__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 /* ================= ریسپانسیو ================= */
 @media (max-width: 1000px) {
   .shop .shop-layout {
     grid-template-columns: 1fr;
   }
   .shop .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+/* اصلاح دکمه‌ها فقط در تبلت (۷۰۱ تا ۱۰۰۰px) — موبایل دست نمی‌خورد */
+@media (max-width: 1000px) and (min-width: 701px) {
+  .shop .p-card__actions .btn-text--long {
+    display: none;
+  }
+  .shop .p-card__actions .btn-text--short {
+    display: inline;
+  }
+  .shop .p-card__actions .btn {
+    padding: 8px 10px;
+    font-size: 12px;
+    gap: 0;
+  }
+  .shop .p-card__actions .btn .arrow {
+    display: none;
+  }
+  .shop .p-card__cart {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
   }
 }
 
@@ -727,26 +794,135 @@
   .shop .toolbar__sort span {
     display: none;
   }
+
+  .shop .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 8px;
+  }
+
   .shop .cta {
-    flex-direction: column;
+    min-height: 260px;
   }
+
+  .shop .cta::before {
+    background: linear-gradient(
+      to top,
+      rgba(253, 246, 238, 0.92) 0%,
+      rgba(253, 246, 238, 0.82) 35%,
+      rgba(253, 246, 238, 0.35) 65%,
+      rgba(253, 246, 238, 0) 92%
+    );
+  }
+
   .shop .cta__body {
-    padding: 24px 20px;
+    max-width: 100%;
+    min-height: 260px;
+    padding: 20px 18px;
+    justify-content: flex-end;
+    align-items: flex-start;
   }
-  .shop .cta__img {
-    min-height: 160px;
+
+  .shop .cta__title {
+    font-size: 17px;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .shop .cta__title .leaf-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .shop .cta__text {
+    font-size: 12px;
+    line-height: 1.9;
+    margin-bottom: 14px;
+    max-width: 100%;
+  }
+
+  .shop .cta .btn {
+    padding: 9px 18px;
+    font-size: 13px;
   }
 }
 
 @media (max-width: 520px) {
   .shop .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 6px;
   }
+
   .shop .p-card--list {
     flex-direction: column;
   }
   .shop .p-card--list .p-card__media {
     width: auto;
+  }
+
+  .shop .p-card__info {
+    padding: 8px 8px 10px;
+  }
+
+  .shop .p-card__title {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+
+  .shop .p-card__rating {
+    font-size: 10px;
+    gap: 3px;
+  }
+
+  .shop .stars {
+    font-size: 11px;
+    gap: 1px;
+  }
+
+  .shop .p-card__prices {
+    font-size: 12px;
+    gap: 6px;
+    margin: 6px 0 8px;
+  }
+
+  .shop .p-card__old {
+    font-size: 10px;
+  }
+
+  .shop .p-card__actions {
+    gap: 4px;
+  }
+
+  .shop .p-card__cart {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .shop .p-card__actions .btn {
+    padding: 7px 6px;
+    font-size: 10.5px;
+    gap: 3px;
+  }
+
+  .shop .p-card__actions .btn .arrow {
+    display: none;
+  }
+
+  .shop .p-card__like {
+    top: 12px;
+    left: 12px;
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+
+  .shop .badge {
+    top: 12px;
+    right: 12px;
+    padding: 2px 8px;
+    font-size: 10px;
   }
 }
 
