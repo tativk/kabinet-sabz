@@ -9,7 +9,9 @@ import Contact from "../pages/Contact";
 import HomeOriginal from "../pages/HomeOriginal";
 import Products from "../pages/Products";
 import Sample from "../pages/Sample";
+import Takmahsol from "../pages/Takmahsol";
 import FAQ from "../pages/FAQ";
+
 
 const AppRoutes = () => {
   return (
@@ -23,8 +25,8 @@ const AppRoutes = () => {
       <Route path="/HomeOriginal" element={<HomeOriginal />} />
       <Route path="/Products" element={<Products />} />
       <Route path="/Sample" element={<Sample />} />
-      <Route path="/faq" element={<FAQ />} />
-      
+      <Route path="/Takmahsol" element={<Takmahsol />} />
+      <Route path="/faq" element={<FAQ />} />      
     </Routes>
   );
 };
