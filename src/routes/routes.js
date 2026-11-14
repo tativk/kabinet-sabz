@@ -1,6 +1,5 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Services from "../pages/Services";
@@ -10,6 +9,7 @@ import Contact from "../pages/Contact";
 import HomeOriginal from "../pages/HomeOriginal";
 import Products from "../pages/Products";
 import Sample from "../pages/Sample";
+import FAQ from "../pages/FAQ";
 
 const AppRoutes = () => {
   return (
@@ -23,6 +23,7 @@ const AppRoutes = () => {
       <Route path="/HomeOriginal" element={<HomeOriginal />} />
       <Route path="/Products" element={<Products />} />
       <Route path="/Sample" element={<Sample />} />
+      <Route path="/faq" element={<FAQ />} />
       
     </Routes>
   );

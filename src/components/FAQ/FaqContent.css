@@ -1,0 +1,141 @@
+/* src/components/FAQ/FaqContent.css */
+.faq-content {
+  position: relative;
+  width: 100%;
+  padding: clamp(24px, 3.4vw, 56px) 0 clamp(32px, 3.6vw, 60px);
+  overflow-x: clip;
+}
+
+.faq-content__inner {
+  width: min(92%, 1560px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(280px, 29%, 460px);
+  gap: clamp(20px, 3.4vw, 52px);
+  align-items: start;
+}
+
+.faq-content__main {
+  min-width: 0;
+}
+
+/* ---------- جستجو ---------- */
+.faq-search {
+  display: flex;
+  align-items: center;
+  height: clamp(50px, 3.6vw, 60px);
+  margin-bottom: 12px;
+  background: #f8ecdf;
+  border: 1px solid #e9d8c3;
+  border-radius: 14px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.faq-search:focus-within {
+  border-color: #c9a97f;
+  box-shadow: 0 0 0 4px rgba(201, 169, 127, 0.22);
+}
+
+.faq-search__icon {
+  flex-shrink: 0;
+  margin: 0 18px;
+  font-size: 20px;
+  color: #8a6a4e;
+}
+
+.faq-search__input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: clamp(14px, 1.1vw, 16px);
+  color: #4a2c17;
+  direction: rtl;
+}
+
+.faq-search__input::placeholder {
+  color: #a58a70;
+}
+
+.faq-search__clear {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: 0 12px;
+  border: 0;
+  border-radius: 50%;
+  background: #efdcc6;
+  color: #6b4426;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.faq-search__clear:hover {
+  background: #e6cdb0;
+}
+
+.faq-content__meta {
+  margin: 0 4px 12px;
+  min-height: 20px;
+  font-size: 13px;
+  color: #8a6a4e;
+}
+
+/* ---------- لیست ---------- */
+.faq-content__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.7vw, 12px);
+  min-width: 0;
+}
+
+.faq-content__empty {
+  padding: 48px 20px;
+  text-align: center;
+  background: #f8ecdf;
+  border: 1px dashed #d9c0a0;
+  border-radius: 14px;
+}
+
+.faq-content__empty p {
+  margin: 0 0 16px;
+  font-size: 15px;
+  color: #6b4a33;
+}
+
+.faq-content__empty button {
+  padding: 10px 26px;
+  border: 0;
+  border-radius: 999px;
+  background: #5a2f17;
+  color: #fff;
+  font-family: inherit;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.faq-content__empty button:hover {
+  background: #44220f;
+}
+
+/* ---------- تبلت و موبایل: تک‌ستونه ---------- */
+@media (max-width: 900px) {
+  .faq-content__inner {
+    grid-template-columns: minmax(0, 1fr);
+    width: min(92%, 680px);
+    gap: 20px;
+  }
+
+  /* دسته‌بندی‌ها ← جستجو و لیست ← راهنمایی */
+  .faq-content__main {
+    order: 2;
+  }
+}
