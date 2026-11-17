@@ -42,7 +42,10 @@ export default function About() {
 
       <section className="about-hero">
 
-        <div className="about-hero__content">
+        <div
+          className="about-hero__content"
+          style={{ "--about-branch": 'url("/shakhe031.png")' }}
+        >
 
           <p className="about-eyebrow">
             زیبایی در جزئیات، ماندگاری در کیفیت
@@ -112,8 +115,6 @@ export default function About() {
             و تیمی متخصص، همواره در کنار شما هستیم تا خانه‌ای
             زیبا و دلنشین داشته باشید.
           </p>
-
-          
 
         </div>
 
