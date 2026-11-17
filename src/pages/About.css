@@ -146,29 +146,6 @@
   pointer-events: none;
 }
 
-.about-breadcrumb {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 24px;
-  padding: 8px 17px;
-  border: 1px solid rgba(230, 174, 112, 0.5);
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #f6dfc5;
-  font-size: 12px;
-}
-
-.about-breadcrumb a {
-  display: inline-flex;
-  color: inherit;
-  font-size: 16px;
-}
-
-.about-breadcrumb__divider {
-  color: #d99a5d;
-}
-
 .about-eyebrow {
   margin: 0 0 8px;
   color: #e8b47e;

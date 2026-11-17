@@ -44,22 +44,6 @@ export default function About() {
 
         <div className="about-hero__content">
 
-          <div className="about-breadcrumb">
-
-            <a href="/" aria-label="صفحه اصلی">
-              <FiHome />
-            </a>
-
-            <span>خانه</span>
-
-            <span className="about-breadcrumb__divider">
-              ›
-            </span>
-
-            <span>درباره ما</span>
-
-          </div>
-
           <p className="about-eyebrow">
             زیبایی در جزئیات، ماندگاری در کیفیت
           </p>
@@ -129,13 +113,7 @@ export default function About() {
             زیبا و دلنشین داشته باشید.
           </p>
 
-          <a
-            className="about-button about-button--small"
-            href="/about-us"
-          >
-            <FiArrowLeft />
-            <span>بیشتر بخوانید</span>
-          </a>
+          
 
         </div>
 
@@ -228,7 +206,7 @@ export default function About() {
 
           <a
             className="about-button about-button--small"
-            href="/projects"
+            href="/portfolio"
           >
             <FiArrowLeft />
             <span>مشاهده نمونه‌کارها</span>
