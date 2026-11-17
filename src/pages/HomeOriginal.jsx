@@ -5,7 +5,7 @@ import { FaHeart } from "react-icons/fa";
 import "./HomeOriginal.css";
 
 
-const SLIDE_INTERVAL = 5000; 
+const SLIDE_INTERVAL = 4000; 
 
 // فعلاً هر پنج اسلاید یک عکس دارند؛ بعداً عوض کنید
 const slides = [
@@ -17,7 +17,7 @@ const slides = [
     titleSub: "زیبایی و دوام در کنار هم",
     text: "انواع محصولات چوبی با طراحی مدرن و کیفیت بالا برای تکمیل دکوراسیون فضای شما",
     buttonText: "مشاهده محصولات",
-    link: "",
+    link: "/Products",
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const slides = [
     titleSub: "انتخابی برای خانه شما",
     text: "محصولات چوبی با طراحی منحصربه‌فرد و کیفیت ساخت بالا",
     buttonText: "مشاهده محصولات",
-    link: "",
+    link: "/Products",
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ const slides = [
     titleSub: "چوب، همیشه زیباست",
     text: "با محصولات چوبی، فضای زندگی خود را زیباتر کنید",
     buttonText: "مشاهده محصولات",
-    link: "",
+    link: "/Products",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const slides = [
     titleSub: "هماهنگی در فضای خانه",
     text: "محصولاتی کاربردی و زیبا برای تکمیل دکوراسیون شما",
     buttonText: "مشاهده محصولات",
-    link: "",
+    link: "/Products",
   },
   {
     id: 5,
@@ -57,7 +57,7 @@ const slides = [
     titleSub: "با محصولات چوب سبز",
     text: "تجربه کیفیت و زیبایی با محصولات متنوع چوبی",
     buttonText: "مشاهده محصولات",
-    link: "",
+    link: "/Products",
   },
 ];
 
@@ -70,7 +70,7 @@ const categories = [
   { id: 6, title: "میز و صندلی", image: "./moble.jpg", link: "" },
   { id: 7, title: "دکور چوبی", image: "./decore.jpg", link: "" },
   { id: 8, title: "اکسسوری چوبی", image: "./saat.jpg", link: "" },
-]; // TODO: image و link هر دسته‌بندی
+]; 
 
 const bestSellers = [
   { id: 1, title: "میز تلویزیون مدرن", rating: 4.8, price: "۸,۹۹۰,۰۰۰", oldPrice: "۹,۹۹۰,۰۰۰", image: "/product/mizteleviz.png", link: "" },
@@ -89,7 +89,7 @@ const promoBanners = [
     text: "برای انتخاب بهتر، با کارشناسان ما در ارتباط باشید.",
     buttonText: "درخواست مشاوره",
     image: "./moshaver.png", 
-    link: "",
+    link: "/Contact",
   },
   {
     id: 2,
@@ -97,8 +97,8 @@ const promoBanners = [
     title: "رنگ مناسب، زیبایی بیشتر",
     text: "با کاتالوگ رنگ چوب سبز، رنگ دلخواه خود را انتخاب کنید.",
     buttonText: "مشاهده کاتالوگ رنگ",
-    image: "./moshaver.png", 
-    link: "",
+    image: "./paletcolor.png", 
+    link: "/Sample",
   },
 ];
 

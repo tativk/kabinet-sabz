@@ -441,7 +441,7 @@ export default function Products() {
               <p className="cta__text">
                 با محصولات چوب سبز، آرامش و زیبایی را به خانه و محل کار خود هدیه دهید.
               </p>
-              <Link to="/products" className="btn">
+              <Link to="/HomeOriginal" className="btn">
                 مشاهده همه محصولات
                 <Arrow />
               </Link>

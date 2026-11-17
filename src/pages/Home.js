@@ -228,7 +228,7 @@ export default function Home() {
             </h1>
             <h2>{slides[activeSlide].subtitle}</h2>
             <p>{slides[activeSlide].description}</p>
-            <a className="home-gold-button home-hero-button" href="#home-contact">
+            <a className="home-gold-button home-hero-button" href="/Contact">
               <span>←</span>
               {slides[activeSlide].button}
             </a>
@@ -300,7 +300,7 @@ export default function Home() {
               <h2>نمونه‌کارهای منتخب</h2>
               <span />
             </div>
-            <a href="#home-contact" className="home-small-link">
+            <a href="/HomeOriginal" className="home-small-link">
               مشاهده همه پروژه‌ها <b>←</b>
             </a>
           </div>
@@ -338,7 +338,7 @@ export default function Home() {
               و کلاسیک، تلاش می‌کنیم تا فضایی زیبا، کاربردی و ماندگار برای شما
               خلق کنیم. کیفیت بالا، توجه به زمان و رضایت شما، افتخار ماست.
             </p>
-            <a className="home-gold-button" href="#home-contact">
+            <a className="home-gold-button" href="/About">
               <span>←</span>
               بیشتر بدانید
             </a>
@@ -420,18 +420,18 @@ export default function Home() {
 
         {/* CTA */}
         <section className="home-cta" id="home-contact">
-          <div className="home-cta-photo">
-            <img src="/images/Home/cta-plant-photo.png" alt="" />
-          </div>
-          <div className="home-cta-content">
-            <h2>برای دریافت مشاوره و ثبت سفارش،<br /> همین حالا اقدام کنید.</h2>
-            <a className="home-gold-button home-cta-button" href="tel:">
-              <span>←</span>
-              درخواست مشاوره
-            </a>
-          </div>
-          <div className="home-cta-leaves" aria-hidden="true">❧</div>
-        </section>
+  <div className="home-cta-photo">
+    <img src="/images/Home/cta-plant-photo.png" alt="" />
+  </div>
+  <div className="home-cta-content">
+    <h2>برای دریافت مشاوره و ثبت سفارش،<br /> همین حالا اقدام کنید.</h2>
+    <Link className="home-gold-button home-cta-button" to="/Contact">
+      <span>←</span>
+      درخواست مشاوره
+    </Link>
+  </div>
+  <div className="home-cta-leaves" aria-hidden="true">❧</div>
+</section>
       </main>
   );
 }

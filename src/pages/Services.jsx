@@ -34,7 +34,7 @@ const services = [
     title: "کمد دیواری و کمد لباس",
     description:
       "طراحی و ساخت انواع کمد دیواری، کمد لباس و فضاهای ذخیره‌سازی با بهترین متریال.",
-    image: "/baner22.png",
+    image: "/komod.jpg",
     icon: <FiTool />,
   },
   {
@@ -42,7 +42,7 @@ const services = [
     title: "دکوراسیون چوبی",
     description:
       "اجرای دکوراسیون داخلی، دیوارپوش، قفسه‌بندی و طراحی فضاهای خاص و کاربردی.",
-    image: "/baner22.png",
+    image: "/televizion.jpg",
     icon: <FiPenTool />,
   },
   {
@@ -50,7 +50,7 @@ const services = [
     title: "جزیره آشپزخانه",
     description:
       "طراحی و ساخت جزیره آشپزخانه با سبک منحصربه‌فرد و هماهنگ با فضای داخلی منزل.",
-    image: "/baner22.png",
+    image: "/baner88.png",
     icon: <FiSettings />,
   },
 ];
@@ -148,7 +148,10 @@ export default function Services() {
 
       <section className="services-hero">
 
-        <div className="services-hero__content">
+       <div
+           className="services-hero__content"
+          style={{ "--branch-image": 'url("/flower2.png")' }}
+                                                              >
 
           
 
