@@ -9,6 +9,7 @@ import Contact from "../pages/Contact";
 import HomeOriginal from "../pages/HomeOriginal";
 import Products from "../pages/Products";
 import Sample from "../pages/Sample";
+import Consultation from "../pages/Consultation";
 import FAQ from "../pages/FAQ";
 
 const AppRoutes = () => {
@@ -23,6 +24,7 @@ const AppRoutes = () => {
       <Route path="/HomeOriginal" element={<HomeOriginal />} />
       <Route path="/Products" element={<Products />} />
       <Route path="/Sample" element={<Sample />} />
+      <Route path="/consultation" element={<Consultation />} />
       <Route path="/faq" element={<FAQ />} />
       
     </Routes>

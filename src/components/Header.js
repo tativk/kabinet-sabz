@@ -139,7 +139,7 @@ export default function Header() {
           تماس با ما
         </Link>
 
-        <Link className="cs-header__mobile-cta" to="/Contact">
+        <Link className="cs-header__mobile-cta" to="/consultation">
           درخواست مشاوره <Icon name="chat" size={18} />
         </Link>
       </nav>
@@ -159,7 +159,7 @@ export default function Header() {
           <Icon name="cart" size={27} />
           <span className="cs-header__cart-count">۰</span>
         </Link>
-        <Link className="cs-header__cta" to="/#home-contact">
+        <Link className="cs-header__cta" to="/consultation">
           <span>درخواست مشاوره</span><Icon name="chat" size={19} />
         </Link>
       </div>
