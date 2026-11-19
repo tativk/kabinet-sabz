@@ -42,23 +42,10 @@ export default function About() {
 
       <section className="about-hero">
 
-        <div className="about-hero__content">
-
-          <div className="about-breadcrumb">
-
-            <a href="/" aria-label="صفحه اصلی">
-              <FiHome />
-            </a>
-
-            <span>خانه</span>
-
-            <span className="about-breadcrumb__divider">
-              ›
-            </span>
-
-            <span>درباره ما</span>
-
-          </div>
+        <div
+          className="about-hero__content"
+          style={{ "--about-branch": 'url("/shakhe031.png")' }}
+        >
 
           <p className="about-eyebrow">
             زیبایی در جزئیات، ماندگاری در کیفیت
@@ -128,14 +115,6 @@ export default function About() {
             و تیمی متخصص، همواره در کنار شما هستیم تا خانه‌ای
             زیبا و دلنشین داشته باشید.
           </p>
-
-          <a
-            className="about-button about-button--small"
-            href="/about-us"
-          >
-            <FiArrowLeft />
-            <span>بیشتر بخوانید</span>
-          </a>
 
         </div>
 
@@ -228,7 +207,7 @@ export default function About() {
 
           <a
             className="about-button about-button--small"
-            href="/projects"
+            href="/portfolio"
           >
             <FiArrowLeft />
             <span>مشاهده نمونه‌کارها</span>

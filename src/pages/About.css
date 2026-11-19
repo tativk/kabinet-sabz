@@ -101,6 +101,59 @@
   justify-content: center;
   padding: 38px clamp(28px, 5vw, 76px) 42px;
   color: #fff8ed;
+
+  /* شفافیت نهایی برگ؛ در مدیا کوئری‌ها override می‌شود */
+  --about-branch-opacity: 0.85;
+}
+
+/* =========================
+   شاخه برگ تزئینی پشت متن هیرو
+   با انیمیشن رشد نرم
+========================= */
+
+.about-hero__content::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+
+  background-image: var(--about-branch, none);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  opacity: 0;
+  pointer-events: none;
+
+  /* رشد از پایین-وسط */
+  transform-origin: bottom center;
+
+  animation:
+    aboutBranchGrow 1.8s cubic-bezier(0.22, 0.9, 0.32, 1) 0.2s forwards,
+    aboutBranchSway 9s ease-in-out 2s infinite;
+}
+
+@keyframes aboutBranchGrow {
+  0% {
+    opacity: 0;
+    transform: scale(0.12) rotate(-5deg);
+  }
+  55% {
+    opacity: calc(var(--about-branch-opacity) * 0.76);
+    transform: scale(0.85) rotate(-1deg);
+  }
+  100% {
+    opacity: var(--about-branch-opacity);
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes aboutBranchSway {
+  0%   { rotate: 0deg; }
+  25%  { rotate: 1deg; }
+  50%  { rotate: 0deg; }
+  75%  { rotate: -1deg; }
+  100% { rotate: 0deg; }
 }
 
 .about-hero__image {
@@ -144,29 +197,6 @@
     rgba(52, 59, 32, 0.15)
   );
   pointer-events: none;
-}
-
-.about-breadcrumb {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 24px;
-  padding: 8px 17px;
-  border: 1px solid rgba(230, 174, 112, 0.5);
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #f6dfc5;
-  font-size: 12px;
-}
-
-.about-breadcrumb a {
-  display: inline-flex;
-  color: inherit;
-  font-size: 16px;
-}
-
-.about-breadcrumb__divider {
-  color: #d99a5d;
 }
 
 .about-eyebrow {
@@ -541,6 +571,11 @@
     padding: 28px 25px 30px;
   }
 
+  .about-hero__content::before {
+    background-size: cover;
+    background-position: center;
+  }
+
   .about-hero__description {
     font-size: 13px;
   }
@@ -613,6 +648,17 @@
     align-items: center;
     padding: 25px 20px 28px;
     text-align: center;
+
+    /* برگ در موبایل کمی محوتر */
+    --about-branch-opacity: 0.7;
+  }
+
+  .about-hero__content::before {
+    background-size: cover;
+    background-position: center;
+    animation:
+      aboutBranchGrow 1.4s cubic-bezier(0.22, 0.9, 0.32, 1) 0.2s forwards,
+      aboutBranchSway 10s ease-in-out 1.6s infinite;
   }
 
   .about-hero__image {
@@ -629,10 +675,6 @@
   .about-hero__image img {
     min-height: 225px;
     height: 225px;
-  }
-
-  .about-breadcrumb {
-    margin-bottom: 16px;
   }
 
   .about-eyebrow {
@@ -849,6 +891,12 @@
 
   .about-hero__content {
     padding-inline: 15px;
+    --about-branch-opacity: 0.6;
+  }
+
+  .about-hero__content::before {
+    background-size: cover;
+    background-position: center;
   }
 
   .about-reasons__grid {
@@ -869,5 +917,17 @@
 
   .about-cta h2 {
     font-size: 14px;
+  }
+}
+
+/* =========================
+   Reduced Motion
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-hero__content::before {
+    animation: none;
+    opacity: var(--about-branch-opacity, 0.85);
+    transform: none;
   }
 }

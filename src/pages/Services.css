@@ -154,6 +154,7 @@
 .services-hero__content {
   position: relative;
   z-index: 2;
+  isolation: isolate;
 
   display: flex;
   flex-direction: column;
@@ -163,6 +164,63 @@
   padding: 30px clamp(25px, 5vw, 75px);
 
   color: #fff8ed;
+}
+
+/* =========================
+   شاخه برگ تزئینی پشت متن هیرو
+   با حس عمق (کوچک، محو، کمی تار)
+   + انیمیشن ورود نرم و تاب آرام
+========================= */
+
+.services-hero__content::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+
+  background-image: var(--branch-image, none);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+
+  opacity: 0;
+  pointer-events: none;
+
+  /* تاری نامحسوس برای حس دورتر بودن */
+  filter: blur(0.6px);
+
+  transform-origin: center center;
+
+  animation:
+    branchEnter 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s forwards,
+    branchSway 8s ease-in-out 1.6s infinite;
+}
+
+@keyframes branchEnter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 0.55;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes branchSway {
+  0%   { rotate: 0deg; }
+  25%  { rotate: 1.2deg; }
+  50%  { rotate: 0deg; }
+  75%  { rotate: -1.2deg; }
+  100% { rotate: 0deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-hero__content::before {
+    animation: none;
+    opacity: 0.55;
+    transform: none;
+  }
 }
 
 .services-breadcrumb {
@@ -837,9 +895,6 @@
   object-position: center;
 }
 
-
-
-
 .services-cta__content {
   display: flex;
 
@@ -852,7 +907,6 @@
   gap: 13px;
 
   padding: 25px 7%;
- 
 
   color: white;
 }
@@ -891,6 +945,11 @@
 
   .services-hero__content {
     padding-inline: 25px;
+  }
+
+  .services-hero__content::before {
+    background-size: contain;
+    background-position: center center;
   }
 
   .services-hero__image::before {
@@ -978,6 +1037,28 @@
     padding: 24px 18px 27px;
 
     text-align: center;
+  }
+
+  .services-hero__content::before {
+    background-size: contain;
+    background-position: center center;
+    transform-origin: center center;
+    filter: blur(0.4px);
+    opacity: 0;
+    animation:
+      branchEnterMobile 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s forwards,
+      branchSway 10s ease-in-out 1.4s infinite;
+  }
+
+  @keyframes branchEnterMobile {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(0.96);
+    }
+    to {
+      opacity: 0.45;
+      transform: translateY(0) scale(1);
+    }
   }
 
   .services-hero__image {
