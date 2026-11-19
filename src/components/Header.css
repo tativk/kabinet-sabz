@@ -288,7 +288,7 @@
 }
 
 /* Mobile: minimal header exactly like the mobile wireframe. */
-@media (min-width: 360px) and (max-width: 767px) {
+@media (max-width: 767px) {
   .cs-header { width: calc(100% - 24px); min-height: 76px; margin-top: 12px; padding: 7px 12px; border-radius: 22px; gap: 8px; }
   .cs-header__decoration { background-size: auto 100%; opacity: .78; }
   .cs-header__brand { flex: 1 1 auto; gap: 7px; }
@@ -347,4 +347,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .cs-header *, .cs-header *::before, .cs-header *::after { transition: none !important; }
+}
+
+.site-shell > .cs-header { position: sticky; top: 0; z-index: 1000; width: 100%; margin: 0; border: 0; border-radius: 0; flex: none; }
+@media (max-width: 1023px) {
+  .cs-header__nav.is-open { inset-inline: 0; top: 100%; max-height: calc(100dvh - var(--cs-header-height)); overflow-y: auto; overscroll-behavior: contain; }
+  .cs-header__nav.is-open > * { flex-shrink: 0; }
+  .cs-header__search-panel { max-height: calc(100dvh - var(--cs-header-height) - 12px); overflow-y: auto; }
 }

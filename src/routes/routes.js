@@ -12,6 +12,8 @@ import Sample from "../pages/Sample";
 import Consultation from "../pages/Consultation";
 import FAQ from "../pages/FAQ";
 import Terms from "../pages/Terms";
+import ProjectRequest from "../pages/ProjectRequest";
+
 
 const AppRoutes = () => {
   return (
@@ -28,6 +30,8 @@ const AppRoutes = () => {
       <Route path="/consultation" element={<Consultation />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/Terms" element={<Terms />} />
+      <Route path="/project-request" element={<ProjectRequest />} />
+
       
     </Routes>
   );

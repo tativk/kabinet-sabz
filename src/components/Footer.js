@@ -53,47 +53,22 @@ function SocialLinks({ mobile = false }) {
 }
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("");
   const [expandedGroups, setExpandedGroups] = useState({ contact: false, links: false, about: false });
   const toggleGroup = (group) => setExpandedGroups((current) => ({ ...current, [group]: !current[group] }));
   const publicBase = process.env.PUBLIC_URL || "";
   const logo = `${publicBase}/images/logo.png`;
   const footerBanner = `${publicBase}/images/Header%20%26%20Footer/footer-bg.webp`;
 
-  const subscribe = (event) => {
-    event.preventDefault();
-    if (!email.trim()) return;
-    setStatus("درخواست شما به‌صورت آزمایشی ثبت شد.");
-    setEmail("");
-  };
 
   return (
     <footer className="cs-footer" dir="rtl">
       <div className="cs-footer__content">
         <div className="cs-footer__visual" aria-hidden="true"><img src={footerBanner} alt="" /></div>
 
-        <section className="cs-footer__column cs-footer__newsletter" aria-labelledby="cs-footer-newsletter-title">
-          <h2 id="cs-footer-newsletter-title"><span>عضویت در خبرنامه</span><LineIcon name="leaf" size={27} /></h2>
-          <p>با عضویت در خبرنامه، از جدیدترین محصولات و تخفیف‌های ویژه مطلع شوید.</p>
-          <form className="cs-footer__subscribe" onSubmit={subscribe}>
-            <label className="cs-footer__sr-only" htmlFor="cs-footer-email">ایمیل شما</label>
-            <div className="cs-footer__input-wrap">
-              <input
-                id="cs-footer-email"
-                type="email"
-                inputMode="email"
-                autoComplete="email"
-                value={email}
-                onChange={(event) => { setEmail(event.target.value); setStatus(""); }}
-                placeholder="ایمیل خود را وارد کنید"
-                required
-              />
-              <LineIcon name="mail" size={20} />
-            </div>
-            <button type="submit">عضویت</button>
-            {status && <span className="cs-footer__status" role="status">{status}</span>}
-          </form>
+        <section className="cs-footer__column cs-footer__project" aria-labelledby="cs-footer-project-title">
+          <h2 id="cs-footer-project-title"><span>شروع پروژه سفارشی</span><LineIcon name="leaf" size={27} /></h2>
+          <p>برای طراحی کابینت یا دکور چوبی، فضای مورد نظر و ایده‌تان را برای ما بنویسید.</p>
+          <Link className="cs-footer__project-link" to="/project-request">ثبت درخواست پروژه</Link>
         </section>
 
         <section className="cs-footer__column cs-footer__accordion cs-footer__contact" data-expanded={expandedGroups.contact}>
