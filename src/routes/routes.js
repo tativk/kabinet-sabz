@@ -9,8 +9,12 @@ import Contact from "../pages/Contact";
 import HomeOriginal from "../pages/HomeOriginal";
 import Products from "../pages/Products";
 import Sample from "../pages/Sample";
+import Consultation from "../pages/Consultation";
 import Takmahsol from "../pages/Takmahsol";
 import FAQ from "../pages/FAQ";
+import Terms from "../pages/Terms";
+import ProjectRequest from "../pages/ProjectRequest";
+
 
 
 const AppRoutes = () => {
@@ -25,8 +29,13 @@ const AppRoutes = () => {
       <Route path="/HomeOriginal" element={<HomeOriginal />} />
       <Route path="/Products" element={<Products />} />
       <Route path="/Sample" element={<Sample />} />
+      <Route path="/consultation" element={<Consultation />} />
+      <Route path="/faq" element={<FAQ />} />
+      <Route path="/Terms" element={<Terms />} />
+      <Route path="/project-request" element={<ProjectRequest />} />
       <Route path="/Takmahsol" element={<Takmahsol />} />
-      <Route path="/faq" element={<FAQ />} />      
+      
+
     </Routes>
   );
 };
