@@ -11,6 +11,7 @@ import Products from "../pages/Products";
 import Sample from "../pages/Sample";
 import Consultation from "../pages/Consultation";
 import FAQ from "../pages/FAQ";
+import Terms from "../pages/Terms";
 
 const AppRoutes = () => {
   return (
@@ -26,6 +27,7 @@ const AppRoutes = () => {
       <Route path="/Sample" element={<Sample />} />
       <Route path="/consultation" element={<Consultation />} />
       <Route path="/faq" element={<FAQ />} />
+      <Route path="/Terms" element={<Terms />} />
       
     </Routes>
   );
