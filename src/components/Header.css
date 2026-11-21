@@ -222,7 +222,7 @@
 .cs-header__search-results p { margin: 10px 4px 2px; color: #876d55; font-size: 12px; }
 
 /* Compact desktop: keep the full navigation, slightly tighter. */
-@media (min-width: 1024px) and (max-width: 1279px) {
+@media (min-width: 1220px) and (max-width: 1279px) {
   .cs-header { width: calc(100% - 72px); min-height: 96px; padding-inline: 20px; gap: 11px; border-radius: 28px; }
   .cs-header__brand { flex-basis: 175px; gap: 8px; }
   .cs-header__brand img { width: 65px; height: 65px; }
@@ -236,7 +236,7 @@
 }
 
 /* Tablet: brand + menu toggle + search/cart/CTA. */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1219px) {
   .cs-header { width: calc(100% - 40px); min-height: 88px; margin-top: 20px; padding: 9px 17px; border-radius: 26px; gap: 12px; }
   .cs-header__decoration { background-size: auto 100%; opacity: .85; }
   .cs-header__brand { flex: 1 1 auto; }
@@ -286,6 +286,9 @@
   .cs-header__mobile-cta { display: inline-flex; margin-top: 12px; }
   .cs-header__search-panel { left: 0; top: calc(100% + 10px); }
 }
+
+.cs-header .cs-header__account-mobile { display: none; }
+@media (max-width: 767px) { .cs-header .cs-header__account-mobile { display: inline-flex; } }
 
 /* Mobile: minimal header exactly like the mobile wireframe. */
 @media (max-width: 767px) {
@@ -349,9 +352,13 @@
   .cs-header *, .cs-header *::before, .cs-header *::after { transition: none !important; }
 }
 
-.site-shell > .cs-header { position: sticky; top: 0; z-index: 1000; width: 100%; margin: 0; border: 0; border-radius: 0; flex: none; }
-@media (max-width: 1023px) {
+.cs-header :is(a.cs-header__cta, a.cs-header__mobile-cta) { color: #fff; background-color: #65300e; line-height: 1.5; text-decoration: none; }
+.cs-header :is(.cs-header__cta, .cs-header__mobile-cta):focus-visible { outline: 3px solid #45260f; outline-offset: 3px; }
+.cs-header { position: fixed; top: 0; inset-inline: 0; z-index: 1000; width: 100%; margin: 0; border: 0; border-radius: 0; flex: none; }
+@media (max-width: 1219px) {
   .cs-header__nav.is-open { inset-inline: 0; top: 100%; max-height: calc(100dvh - var(--cs-header-height)); overflow-y: auto; overscroll-behavior: contain; }
   .cs-header__nav.is-open > * { flex-shrink: 0; }
   .cs-header__search-panel { max-height: calc(100dvh - var(--cs-header-height) - 12px); overflow-y: auto; }
 }
+
+.cs-header-space{height:var(--cs-header-height,104px);flex:none}.cs-header{height:var(--cs-header-height,104px);min-height:0}.cs-header__mobile-cart{display:none}@media(max-width:767px){.cs-header__mobile-cart{display:block;padding:10px;color:var(--cs-brown);text-decoration:none}}

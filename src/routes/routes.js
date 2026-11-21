@@ -13,6 +13,8 @@ import Consultation from "../pages/Consultation";
 import Takmahsol from "../pages/Takmahsol";
 import FAQ from "../pages/FAQ";
 import Terms from "../pages/Terms";
+import Login from "../pages/login";
+import Cart from "../pages/cart";
 import ProjectRequest from "../pages/ProjectRequest";
 
 
@@ -20,6 +22,9 @@ import ProjectRequest from "../pages/ProjectRequest";
 const AppRoutes = () => {
   return (
     <Routes>
+      <Route path="/auth" element={<Navigate replace to="/login" />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/cart" element={<Cart />} />
       <Route path="/About" element={<About />} />
       <Route path="/Services" element={<Services />} />
       <Route path="/" element={<Home />} />
