@@ -363,4 +363,5 @@
   .cs-footer *, .cs-footer *::before, .cs-footer *::after { transition: none !important; }
 }
 
-.site-shell > .cs-footer { width: 100%; margin: 0; border-radius: 0; border: 0; flex: none; }
+.cs-footer .cs-footer__project-link { color: #fff; }
+.cs-footer { width: 100%; margin: 0; border-radius: 0; border: 0; flex: none; }

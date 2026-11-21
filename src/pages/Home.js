@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "./Home.css";
 
 export default function Home() {
@@ -188,6 +190,8 @@ export default function Home() {
   };
 
   return (
+    <>
+      <Header />
       <main className="home-page" dir="rtl">
         {/* Hero */}
         <section className="home-hero">
@@ -433,5 +437,7 @@ export default function Home() {
   <div className="home-cta-leaves" aria-hidden="true">❧</div>
 </section>
       </main>
+      <Footer />
+    </>
   );
 }

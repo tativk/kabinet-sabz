@@ -1,0 +1,268 @@
+.csau {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  min-height: 82vh;
+  padding: 52px 20px 115px;
+  background: radial-gradient(ellipse at center, #fff9ed, #f5e8cf);
+  color: #362b1c;
+  text-align: center;
+  font-family: inherit;
+}
+.csau * {
+  box-sizing: border-box;
+}
+.csau-panel {
+  width: min(100%, 390px);
+  position: relative;
+  z-index: 2;
+}
+.csau-logo {
+  display: block;
+  width: 86px;
+  height: 86px;
+  object-fit: contain;
+  margin: 0 auto 15px;
+}
+.csau h1 {
+  font-size: clamp(25px, 3vw, 36px);
+  line-height: 1.5;
+  margin: 0;
+  color: inherit;
+}
+.csau h1:focus {
+  outline: none;
+}
+.csau p {
+  font-size: 15px;
+  color: #635440;
+  margin: 6px 0 24px;
+}
+.csau small {
+  color: #665a42;
+}
+.csau fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.csau-label {
+  display: block;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+.csau-label input {
+  width: 100%;
+  display: block;
+  margin-top: 5px;
+  padding: 10px 14px;
+  border: 1px solid #c9b89b;
+  border-radius: 10px;
+  background: #fffaf0;
+  color: #332b1b;
+  font: inherit;
+  min-height: 46px;
+}
+.csau button {
+  font: inherit;
+  cursor: pointer;
+}
+.csau :is(input, button):focus-visible {
+  outline: 2px solid #526039;
+  outline-offset: 3px;
+}
+.csau button:disabled {
+  cursor: default;
+  opacity: 0.65;
+}
+.csau-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+}
+.csau-row input {
+  accent-color: #535e36;
+}
+.csau-link {
+  border: 0;
+  background: none;
+  color: #424d2c;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding: 8px 0;
+  font-size: 14px !important;
+}
+.csau-primary {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px;
+  background: #505c34;
+  color: white;
+  margin: 10px 0;
+  font-weight: bold !important;
+}
+.csau-hint {
+  display: block;
+  font-size: 12px;
+  margin-top: 14px;
+}
+.csau [role="status"]:not(:empty) {
+  font-size: 14px;
+  color: #823d2c;
+  margin: 10px 0;
+}
+.csau .csau-code {
+  letter-spacing: 0.65em;
+  text-align: center;
+  font-size: 1.4rem;
+  font-variant-numeric: tabular-nums;
+}
+.csau-wave,
+.csau-branch {
+  position: absolute;
+  pointer-events: none;
+}
+.csau-wave {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(65px, 10vw, 135px);
+}
+.csau-branch {
+  width: clamp(80px, 14vw, 210px);
+  z-index: 1;
+}
+.csau-branch.top {
+  top: -8px;
+  left: -8px;
+}
+.csau-branch.bottom {
+  bottom: 0;
+  right: -8px;
+  transform: rotate(180deg);
+}
+@media (max-width: 600px) {
+  .csau {
+    padding: 34px 24px 84px;
+    min-height: 80svh;
+  }
+  .csau-logo {
+    width: 70px;
+    height: 70px;
+  }
+  .csau-panel {
+    max-width: 350px;
+  }
+  .csau-branch {
+    width: 80px;
+  }
+}
+/* Fill the viewport, including padding; reserve a visible band below the form. */
+.csau {
+  --wave: clamp(46px, 11dvh, 118px);
+  height: 100vh;
+  height: 100dvh;
+  box-sizing: border-box;
+  min-height: 0;
+  padding: 8px 16px calc(var(--wave) + 6px);
+  grid-template-rows: minmax(0, 1fr);
+}
+.csau-wave {
+  bottom: 4px;
+  height: var(--wave);
+  object-fit: fill;
+}
+.csau-branch {
+  max-height: 30%;
+  object-fit: contain;
+  opacity: 0.85;
+}
+.csau-branch.bottom {
+  bottom: var(--wave);
+}
+.csau-branch.third {
+  right: 1%;
+  top: 4%;
+  transform: rotate(-25deg);
+  width: clamp(55px, 9vw, 130px);
+}
+.csau-logo {
+  height: clamp(44px, 9dvh, 82px);
+  width: auto;
+  margin-bottom: 4px;
+}
+.csau-panel {
+  min-width: 0;
+}
+.csau-label {
+  margin: 6px 0;
+}
+.csau p {
+  margin: 3px 0 12px;
+}
+.csau-hint {
+  margin-top: 5px;
+}
+@media (max-height: 690px) {
+  .csau {
+    --wave: clamp(30px, 7dvh, 46px);
+  }
+  .csau h1 {
+    font-size: 24px;
+  }
+  .csau p {
+    font-size: 13px;
+    margin: 2px 0 6px;
+  }
+  .csau-label {
+    margin: 3px 0;
+  }
+  .csau-label input {
+    min-height: 34px;
+    padding: 6px 10px;
+    margin-top: 2px;
+  }
+  .csau-link {
+    padding: 4px 0;
+  }
+  .csau-primary {
+    padding: 7px;
+    margin: 4px 0;
+  }
+  .csau-logo {
+    height: 38px;
+  }
+}
+@media (max-height: 470px) and (min-width: 540px) {
+  .csau-panel {
+    width: min(94%, 780px);
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    column-gap: 24px;
+    align-content: center;
+  }
+  .csau-panel > * {
+    grid-column: 1;
+  }
+  .csau-panel form {
+    grid-column: 2;
+    grid-row: 1 / span 7;
+    align-self: center;
+  }
+  .csau-logo {
+    margin: auto;
+  }
+  .csau h1 {
+    align-self: end;
+  }
+}
