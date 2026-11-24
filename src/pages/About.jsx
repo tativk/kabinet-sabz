@@ -180,11 +180,17 @@ export default function About() {
 
       <section className="about-craft">
 
-        <img
-          className="about-craft__background"
-          src="/baner33.png"
-          alt="استادکار در حال ساخت و پرداخت قطعات چوبی"
-        />
+        <picture className="about-craft__background">
+  <source
+    media="(max-width: 380px)"
+    srcSet="/baner55.png"
+  />
+
+  <img
+    src="/baner33.png"
+    alt="استادکار در حال ساخت و پرداخت قطعات چوبی"
+  />
+</picture>
 
         <div className="about-craft__overlay"></div>
 

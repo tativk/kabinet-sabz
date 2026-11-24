@@ -1,32 +1,34 @@
 /* =========================================
-   تنظیمات اصلی صفحه تماس با ما
+   صفحه تماس با ما - چوب سبز
 ========================================= */
 
 .contact-page {
-  --green: #3f4623;
-  --green-dark: #292e17;
-  --green-light: #626b3d;
-  --gold: #c98b4c;
-  --gold-light: #e5b17c;
-  --cream: #fbf4e9;
-  --cream-dark: #f3e7d6;
-  --text: #352b1e;
+  --contact-bg: #f7ecdd;
+  --contact-card: #f8ecdf;
+  --contact-border: #e9d8c3;
+  --contact-text: #4a2c17;
+  --contact-muted: #8a6a4e;
+  --contact-accent: #c8742f;
+  --contact-accent-light: #d9843a;
+  --contact-deep: #3f2412;
 
-  direction: rtl;
   width: 100%;
   overflow: hidden;
-  background: var(--cream);
-  color: var(--text);
+  direction: rtl;
+  color: var(--contact-text);
+  background: var(--contact-bg);
   font-family: inherit;
 }
 
-.contact-page * {
+.contact-page *,
+.contact-page *::before,
+.contact-page *::after {
   box-sizing: border-box;
 }
 
 .contact-page a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 .contact-page img {
@@ -40,546 +42,592 @@
 .contact-page input,
 .contact-page textarea,
 .contact-page select {
-  font-family: inherit;
+  font: inherit;
 }
 
+.contact-page p {
+  line-height: 2;
+}
 
 /* =========================================
-   انیمیشن عمومی ورود المان‌ها
+   انیمیشن ورود
 ========================================= */
 
 @keyframes contactFadeUp {
   from {
     opacity: 0;
-    transform: translateY(35px);
+    transform: translateY(22px);
   }
 
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes contactFadeIn {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes contactFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-7px);
   }
 }
 
 .reveal-item {
-  animation: contactFadeUp 0.85s ease both;
+  animation: contactFadeUp 0.65s ease both;
 }
 
 .contact-info-card:nth-child(1) {
-  animation-delay: 0.1s;
+  animation-delay: 0.08s;
 }
 
 .contact-info-card:nth-child(2) {
-  animation-delay: 0.2s;
+  animation-delay: 0.16s;
 }
 
 .contact-info-card:nth-child(3) {
-  animation-delay: 0.3s;
+  animation-delay: 0.24s;
 }
 
 .contact-info-card:nth-child(4) {
-  animation-delay: 0.4s;
+  animation-delay: 0.32s;
 }
 
+.contact-section-kicker {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--contact-accent);
+  font-size: 13px;
+  font-weight: 700;
+}
 
 /* =========================================
-   بنر بالایی
+   بنر اصلی
 ========================================= */
 
 .contact-hero {
-  width: 100%;
-  min-height: 330px;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  direction: ltr;
-  background: var(--green-dark);
   position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: clamp(330px, 39vw, 520px);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: #302719;
 }
 
 .contact-hero-image {
-  height: 330px;
-  position: relative;
+  position: absolute;
+  inset: 0;
+  z-index: -3;
   overflow: hidden;
 }
 
 .contact-hero-image img {
-  transition: transform 1s ease;
+  object-position: center 48%;
+  transform: scale(1.03);
+  animation: contactHeroZoom 1.5s ease-out forwards;
 }
 
-.contact-hero:hover .contact-hero-image img {
-  transform: scale(1.04);
+@keyframes contactHeroZoom {
+  to {
+    transform: scale(1);
+  }
+}
+
+.contact-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(
+    270deg,
+    rgba(38, 32, 18, 0.82) 0%,
+    rgba(38, 32, 18, 0.62) 38%,
+    rgba(38, 32, 18, 0.22) 72%,
+    rgba(38, 32, 18, 0.08) 100%
+  );
+}
+
+.contact-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 75px;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--contact-bg)
+  );
+  pointer-events: none;
 }
 
 .contact-hero-content {
-  direction: rtl;
+  width: min(92%, 1450px);
+  margin: 0 auto;
+  padding: 70px 5% 90px 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  padding: 35px 8% 35px 12%;
-  color: white;
-  background:
-    radial-gradient(
-      circle at 90% 90%,
-      rgba(135, 143, 80, 0.16),
-      transparent 35%
-    ),
-    var(--green-dark);
-  position: relative;
-}
-
-.contact-breadcrumb {
-  display: flex;
-  gap: 10px;
-  font-size: 12px;
-  color: #e8d7b8;
-  margin-bottom: 25px;
+  color: #fff;
+  animation: contactFadeUp 0.8s ease both;
 }
 
 .contact-hero-subtitle {
-  color: var(--gold-light);
-  font-size: 19px;
+  margin-bottom: 10px;
+  color: #e8b27c;
+  font-size: clamp(14px, 1.5vw, 19px);
   font-weight: 600;
-  margin-bottom: 4px;
 }
 
 .contact-hero-content h1 {
-  font-size: clamp(32px, 4vw, 48px);
-  color: white;
-  margin: 0 0 15px;
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: clamp(34px, 4.5vw, 58px);
   font-weight: 800;
+  line-height: 1.3;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.3);
 }
 
 .contact-hero-content h1 span {
-  color: var(--gold-light);
+  color: #e8b27c;
 }
 
 .contact-hero-content p {
-  max-width: 440px;
+  max-width: 520px;
+  margin: 0 0 24px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(13px, 1.15vw, 16px);
   line-height: 2.1;
+}
+
+.contact-hero-btn,
+.contact-bottom-content a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--contact-accent);
+  color: #fff !important;
   font-size: 14px;
-  color: #f3eee3;
-  margin: 0 0 20px;
+  font-weight: 600;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
 .contact-hero-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--gold);
-  color: white !important;
-  padding: 13px 25px;
-  border-radius: 50px;
-  font-size: 14px;
-  transition: 0.3s;
+  padding: 13px 27px;
 }
 
-.contact-hero-btn:hover {
-  background: var(--gold-light);
-  color: var(--green-dark) !important;
-  transform: translateY(-4px);
+.contact-hero-btn:hover,
+.contact-bottom-content a:hover {
+  background: #a95e25;
+  transform: translateY(-3px);
 }
-
 
 /* =========================================
    کارت‌های اطلاعات تماس
 ========================================= */
 
 .contact-info-section {
-  padding: 40px 3% 20px;
+  position: relative;
+  z-index: 2;
+  width: min(94%, 1500px);
+  margin: -26px auto 0;
+  padding: 0 0 30px;
 }
 
 .contact-info-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 1450px;
-  margin: auto;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 1.5vw, 22px);
 }
 
 .contact-info-card {
-  min-height: 145px;
-  padding: 20px 12px;
-  border: 1px solid #eee0cc;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.28);
-  box-shadow: 0 5px 15px rgba(95, 69, 35, 0.06);
+  min-width: 0;
+  min-height: 165px;
+  padding: 25px 14px 18px;
   text-align: center;
-  position: relative;
-  transition: 0.35s ease;
+  background: var(--contact-card);
+  border: 1px solid var(--contact-border);
+  border-radius: 17px;
+  box-shadow: 0 6px 20px rgba(107, 68, 38, 0.07);
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
 }
 
 .contact-info-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 12px 25px rgba(95, 69, 35, 0.12);
-  border-color: var(--gold);
+  transform: translateY(-6px);
+  border-color: #c9a97f;
+  box-shadow: 0 12px 25px rgba(107, 68, 38, 0.12);
 }
 
 .contact-info-icon {
   width: 48px;
   height: 48px;
-  background: var(--green);
-  color: white;
-  border-radius: 50%;
+  margin: -49px auto 13px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 22px;
-  margin: -35px auto 12px;
-  transition: 0.4s;
+  justify-content: center;
+  border: 5px solid var(--contact-bg);
+  border-radius: 50%;
+  background: #7a7449;
+  color: #fff;
+  font-size: 20px;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
 }
 
 .contact-info-card:hover .contact-info-icon {
-  background: var(--gold);
-  transform: rotate(10deg);
+  transform: rotate(8deg);
+  background: var(--contact-accent);
 }
 
 .contact-info-card h3 {
+  margin: 0 0 7px;
+  color: var(--contact-deep);
   font-size: 16px;
-  margin: 0 0 8px;
+  font-weight: 700;
 }
 
 .contact-info-card p {
+  margin: 0 0 4px;
+  color: var(--contact-text);
   font-size: 13px;
-  margin: 0 0 5px;
   font-weight: 600;
 }
 
-.contact-info-card span {
+.contact-info-card > span {
+  color: var(--contact-muted);
   font-size: 12px;
-  color: #81725e;
 }
 
-
 /* =========================================
-   بخش اصلی نقشه و فرم تماس
+   نقشه و فرم تماس
 ========================================= */
 
 .contact-main-section {
+  width: min(94%, 1500px);
+  margin: 0 auto;
+  padding: 12px 0 22px;
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  direction: ltr;
-  gap: 18px;
-  padding: 5px 3%;
-  max-width: 1500px;
-  margin: auto;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(14px, 2vw, 26px);
   align-items: stretch;
 }
 
-
-/* نقشه */
+.contact-map-wrapper,
+.contact-form-wrapper,
+.contact-working-card,
+.contact-area-card {
+  border: 1px solid var(--contact-border);
+  border-radius: 18px;
+  background: var(--contact-card);
+  box-shadow: 0 5px 18px rgba(107, 68, 38, 0.07);
+}
 
 .contact-map-wrapper {
-  direction: rtl;
-  min-height: 340px;
   position: relative;
-  border-radius: 20px;
+  min-height: 390px;
   overflow: hidden;
-  border: 1px solid #eadbc5;
-  box-shadow: 0 5px 16px rgba(80, 62, 36, 0.08);
 }
 
 .contact-map-wrapper iframe {
+  display: block;
   width: 100%;
   height: 100%;
-  min-height: 340px;
-  border: none;
-  display: block;
+  min-height: 390px;
+  border: 0;
 }
 
 .map-location-card {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(255, 252, 245, 0.96);
-  border-radius: 14px;
-  padding: 13px 17px;
+  top: 18px;
+  right: 18px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
+  gap: 11px;
+  padding: 12px 16px;
+  border: 1px solid rgba(233, 216, 195, 0.9);
+  border-radius: 13px;
+  background: rgba(248, 236, 223, 0.96);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease;
 }
 
 .map-location-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
 
-.map-location-card div {
-  color: var(--green);
-  font-size: 24px;
+.map-location-card > div {
+  display: flex;
+  color: #7a7449;
+  font-size: 23px;
 }
 
 .map-location-card h3 {
+  margin: 0 0 3px;
+  color: var(--contact-deep);
   font-size: 14px;
-  margin: 0 0 5px;
 }
 
 .map-location-card p {
-  font-size: 11px;
   margin: 0;
+  color: var(--contact-muted);
+  font-size: 11px;
 }
 
 .map-fullscreen {
   position: absolute;
   bottom: 15px;
   left: 15px;
-  width: 38px;
-  height: 38px;
-  border-radius: 9px;
-  background: white;
-  color: var(--green);
+  width: 40px;
+  height: 40px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  border: 1px solid var(--contact-border);
+  border-radius: 10px;
+  background: var(--contact-card);
+  color: #7a7449;
   font-size: 19px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
+.map-fullscreen:hover {
+  background: #7a7449;
+  color: #fff;
+}
 
-/* فرم تماس */
+/* فرم */
 
 .contact-form-wrapper {
-  direction: rtl;
-  padding: 18px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.32);
-  border: 1px solid #ecdfcc;
-  box-shadow: 0 5px 16px rgba(80, 62, 36, 0.07);
+  min-width: 0;
+  padding: clamp(20px, 2.2vw, 30px);
   scroll-margin-top: 100px;
 }
 
+.contact-form-heading {
+  margin-bottom: 20px;
+}
+
 .contact-form-heading h2 {
-  font-size: 21px;
-  margin: 0 0 8px;
-  color: var(--text);
+  margin: 0 0 7px;
+  color: var(--contact-deep);
+  font-size: clamp(20px, 1.7vw, 25px);
+  font-weight: 700;
 }
 
 .contact-form-heading p {
+  margin: 0;
+  color: var(--contact-muted);
   font-size: 13px;
-  line-height: 1.9;
-  color: #766a59;
-  margin: 0 0 17px;
 }
 
 .contact-form-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
 .contact-input-group {
   position: relative;
-  margin-bottom: 13px;
+  min-width: 0;
+  margin-bottom: 14px;
+}
+
+.contact-input-group label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--contact-text);
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .contact-input-group input,
 .contact-input-group textarea,
 .contact-input-group select {
   width: 100%;
-  border: 1px solid #eadcc8;
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 13px;
+  min-width: 0;
+  border: 1px solid var(--contact-border);
+  border-radius: 11px;
   outline: none;
-  color: var(--text);
+  background: #fbf4e9;
+  color: var(--contact-text);
   font-size: 13px;
-  padding: 13px 14px;
-  transition: 0.3s;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
 }
 
 .contact-input-group input {
-  height: 43px;
+  height: 47px;
+  padding: 0 13px;
+}
+
+.contact-input-group textarea {
+  min-height: 100px;
+  padding: 12px 13px;
+  resize: vertical;
+}
+
+.contact-input-group select {
+  height: 46px;
+  padding: 0 13px 0 38px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.contact-input-group input::placeholder,
+.contact-input-group textarea::placeholder {
+  color: #a58a70;
 }
 
 .contact-input-group input:focus,
 .contact-input-group textarea:focus,
 .contact-input-group select:focus {
-  border-color: var(--green-light);
-  background: white;
-  box-shadow: 0 0 0 3px rgba(63, 70, 35, 0.07);
-}
-
-.contact-input-group label {
-  display: block;
-  font-size: 12px;
-  margin-bottom: 7px;
-  font-weight: 600;
-}
-
-.contact-input-group textarea {
-  height: 75px;
-  resize: vertical;
-}
-
-.contact-input-group select {
-  appearance: none;
-  height: 42px;
-  cursor: pointer;
+  border-color: #c9a97f;
+  background: #fffaf3;
+  box-shadow: 0 0 0 3px rgba(201, 169, 127, 0.2);
 }
 
 .select-arrow {
   position: absolute;
-  left: 12px;
-  bottom: 13px;
+  left: 13px;
+  bottom: 14px;
+  color: #7a7449;
   pointer-events: none;
-  color: var(--green);
 }
 
 .contact-submit-btn {
   width: 100%;
-  height: 43px;
-  border: none;
-  border-radius: 50px;
-  background: var(--green);
-  color: white;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 999px;
+  background: #5a2f17;
+  color: #fff;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  transition: 0.3s;
+  transition:
+    background 0.22s ease,
+    transform 0.22s ease;
 }
 
 .contact-submit-btn:hover {
-  background: var(--gold);
-  transform: translateY(-3px);
+  background: var(--contact-accent);
+  transform: translateY(-2px);
 }
 
 .contact-success-message {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
-  color: #3e7138;
+  margin-top: 13px;
+  color: #47743e;
   font-size: 12px;
-  margin-top: 12px;
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
+.contact-success-message svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
 
 /* =========================================
    ساعات کاری و محدوده فعالیت
 ========================================= */
 
 .contact-details-section {
+  width: min(94%, 1500px);
+  margin: 0 auto;
+  padding: 8px 0 25px;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  direction: ltr;
-  gap: 18px;
-  padding: 18px 3%;
-  max-width: 1500px;
-  margin: auto;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(14px, 2vw, 26px);
 }
 
-
-/* کارت ساعات کاری */
-
 .contact-working-card {
+  min-width: 0;
+  min-height: 230px;
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  direction: ltr;
-  min-height: 205px;
-  border: 1px solid #ecdfcc;
-  border-radius: 20px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 5px 16px rgba(80, 62, 36, 0.06);
 }
 
 .working-image {
-  min-height: 205px;
+  min-height: 230px;
   overflow: hidden;
 }
 
 .working-image img {
-  transition: 0.6s;
+  transition: transform 0.6s ease;
 }
 
 .contact-working-card:hover .working-image img {
-  transform: scale(1.07);
+  transform: scale(1.06);
 }
 
 .working-content {
-  direction: rtl;
-  padding: 20px;
+  min-width: 0;
+  padding: clamp(18px, 2vw, 26px);
 }
 
 .details-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  gap: 12px;
+  margin-bottom: 9px;
 }
 
 .details-heading h2 {
-  font-size: 17px;
   margin: 0;
-}
-
-.details-heading svg {
-  font-size: 26px;
-  color: var(--green);
+  color: var(--contact-deep);
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .working-content > p,
 .contact-area-card > p {
+  margin: 8px 0 15px;
+  color: var(--contact-muted);
   font-size: 12px;
-  color: #796d5b;
   line-height: 2;
-  margin: 8px 0 16px;
 }
 
 .working-time-row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 10px;
-  padding: 9px 0;
-  border-bottom: 1px solid #ebdfcc;
+  padding: 10px 0;
+  border-bottom: 1px solid #eadcc9;
+  color: var(--contact-text);
   font-size: 12px;
 }
 
 .working-time-row strong {
-  color: var(--green);
+  color: #7a7449;
+  white-space: nowrap;
 }
 
-
-/* کارت محدوده فعالیت */
-
 .contact-area-card {
-  direction: rtl;
-  padding: 22px;
-  border: 1px solid #ecdfcc;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 5px 16px rgba(80, 62, 36, 0.06);
-  transition: 0.3s;
+  min-width: 0;
+  padding: clamp(20px, 2.2vw, 30px);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .contact-area-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(107, 68, 38, 0.1);
 }
 
 .contact-cities {
@@ -590,441 +638,179 @@
 
 .contact-cities span {
   padding: 8px 13px;
-  background: #f3e8d7;
-  border-radius: 30px;
-  color: #62533d;
-  font-size: 11px;
-  transition: 0.3s;
+  border: 1px solid #eadcc9;
+  border-radius: 999px;
+  background: #f1e1cd;
+  color: #6b4a33;
+  font-size: 11.5px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .contact-cities span:hover {
-  background: var(--green);
-  color: white;
+  background: #7a7449;
+  color: #fff;
 }
 
-
-
 /* =========================================
-   بنر پایانی
+   بنر پایانی - تصویر تمام‌صفحه
 ========================================= */
 
 .contact-bottom-banner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  direction: ltr;
-  min-height: 190px;
-  margin: 20px 3% 45px;
-  background: var(--green-dark);
-  border-radius: 22px;
-  overflow: hidden;
   position: relative;
+  isolation: isolate;
+  width: min(94%, 1500px);
+  min-height: 260px;
+  margin: 5px auto 45px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid var(--contact-border);
+  border-radius: 20px;
+  background: #3f2412;
+  box-shadow: 0 6px 20px rgba(107, 68, 38, 0.07);
 }
 
+/* تصویر تمام کارت */
+
 .contact-bottom-image {
-  height: 190px;
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
 .contact-bottom-image img {
-  transition: 0.8s;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.7s ease;
 }
 
 .contact-bottom-banner:hover .contact-bottom-image img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
+/* لایه تیره روی تصویر */
+
+.contact-bottom-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    270deg,
+    rgba(45, 29, 17, 0.88),
+    rgba(45, 29, 17, 0.62),
+    rgba(45, 29, 17, 0.2)
+  );
+}
+
+/* محتوای روی تصویر */
+
 .contact-bottom-content {
-  direction: rtl;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 260px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  align-items: center;
-  padding: 25px 30px;
-  color: white;
-  background:
-    radial-gradient(
-      circle at 100% 100%,
-      rgba(134, 146, 78, 0.2),
-      transparent 40%
-    ),
-    var(--green-dark);
+  padding: 35px 45px;
+  background: transparent;
 }
 
 .contact-bottom-content h2 {
-  font-size: 22px;
   margin: 0 0 10px;
+  color: #fff;
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.7;
 }
 
 .contact-bottom-content p {
-  font-size: 13px;
-  color: #e7dfce;
-  margin: 0 0 17px;
-  line-height: 2;
+  margin: 0 0 18px;
+  color: #f5e8d9;
+  font-size: 14px;
+}
+
+.contact-bottom-content .contact-section-kicker {
+  color: #e8b27c;
 }
 
 .contact-bottom-content a {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--gold);
-  color: white;
-  padding: 12px 23px;
-  border-radius: 40px;
-  font-size: 13px;
-  transition: 0.3s;
+  padding: 12px 25px;
+  border-radius: 30px;
+  background: var(--contact-accent);
+  color: #fff;
 }
 
 .contact-bottom-content a:hover {
-  background: var(--gold-light);
-  color: var(--green-dark);
-  transform: translateY(-4px);
+  background: #a95e25;
 }
-
 
 /* =========================================
-   ریسپانسیو تبلت
+   ساعت متحرک
 ========================================= */
-
-@media (max-width: 1024px) {
-
-  .contact-hero {
-    min-height: 290px;
-  }
-
-  .contact-hero-image {
-    height: 290px;
-  }
-
-  .contact-hero-content {
-    padding: 25px 6%;
-  }
-
-  .contact-hero-content h1 {
-    font-size: 36px;
-  }
-
-  .contact-hero-content p {
-    font-size: 12px;
-  }
-
-  .contact-info-grid {
-    gap: 12px;
-  }
-
-  .contact-info-card {
-    min-height: 140px;
-  }
-
-  .contact-main-section {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .contact-details-section {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-working-card {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .contact-area-card {
-    min-height: 170px;
-  }
-
-  .contact-bottom-content h2 {
-    font-size: 19px;
-  }
-
-}
-
-
-/* =========================================
-   ریسپانسیو موبایل
-========================================= */
-
-@media (max-width: 600px) {
-
-  .contact-hero {
-    grid-template-columns: 1fr;
-    direction: rtl;
-  }
-
-  .contact-hero-image {
-    height: 220px;
-    grid-row: 1;
-  }
-
-  .contact-hero-content {
-    padding: 25px 22px 30px;
-    grid-row: 2;
-  }
-
-  .contact-hero-content h1 {
-    font-size: 34px;
-  }
-
-  .contact-hero-subtitle {
-    font-size: 16px;
-  }
-
-  .contact-hero-content p {
-    font-size: 12px;
-  }
-
-  .contact-breadcrumb {
-    margin-bottom: 15px;
-  }
-
-
-  /* کارت‌های اطلاعات تماس */
-
-  .contact-info-section {
-    padding: 35px 18px 15px;
-  }
-
-  .contact-info-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 35px 12px;
-  }
-
-  .contact-info-card {
-    min-height: 135px;
-    padding: 17px 8px;
-  }
-
-  .contact-info-card h3 {
-    font-size: 14px;
-  }
-
-  .contact-info-card p {
-    font-size: 11px;
-  }
-
-  .contact-info-card span {
-    font-size: 10px;
-  }
-
-
-  /* نقشه و فرم */
-
-  .contact-main-section {
-    grid-template-columns: 1fr;
-    direction: rtl;
-    padding: 10px 18px;
-  }
-
-  .contact-map-wrapper {
-    min-height: 260px;
-    grid-row: 1;
-  }
-
-  .contact-map-wrapper iframe {
-    min-height: 260px;
-  }
-
-  .contact-form-wrapper {
-    padding: 17px;
-  }
-
-  .contact-form-heading h2 {
-    font-size: 19px;
-  }
-
-  .contact-form-row {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-
-  /* ساعات کاری */
-
-  .contact-details-section {
-    grid-template-columns: 1fr;
-    direction: rtl;
-    padding: 12px 18px;
-  }
-
-  .contact-working-card {
-    grid-template-columns: 1fr;
-    direction: rtl;
-  }
-
-  .working-image {
-    height: 190px;
-    min-height: 190px;
-  }
-
-  .working-content {
-    padding: 20px;
-  }
-
-  .contact-area-card {
-    padding: 20px;
-  }
-
-
-  /* سوالات متداول */
-
-  .contact-faq-section {
-    margin: 10px 18px 20px;
-    padding: 18px 13px;
-  }
-
-  .contact-faq-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-
-  .contact-faq-header h2 {
-    font-size: 17px;
-  }
-
-  .contact-faq-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .contact-faq-question {
-    font-size: 11px;
-  }
-
-
-  /* بنر پایانی */
-
-  .contact-bottom-banner {
-    grid-template-columns: 1fr;
-    direction: rtl;
-    margin: 20px 18px 35px;
-  }
-
-  .contact-bottom-image {
-    height: 150px;
-  }
-
-  .contact-bottom-content {
-    padding: 23px 20px;
-  }
-
-  .contact-bottom-content h2 {
-    font-size: 18px;
-    line-height: 1.8;
-  }
-
-  .contact-bottom-content p {
-    font-size: 12px;
-  }
-
-  .contact-bottom-content a {
-    font-size: 11px;
-    padding: 11px 17px;
-  }
-
-}
-
-
-/* =========================================
-   موبایل‌های کوچک
-========================================= */
-
-@media (max-width: 380px) {
-
-  .contact-info-grid {
-    gap: 32px 9px;
-  }
-
-  .contact-info-card h3 {
-    font-size: 12px;
-  }
-
-  .contact-info-card p {
-    font-size: 10px;
-  }
-
-  .contact-hero-content h1 {
-    font-size: 30px;
-  }
-
-  .contact-bottom-content h2 {
-    font-size: 16px;
-  }
-
-}
-
-
-/* =========================================
-   کاهش انیمیشن برای کاربران حساس
-========================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .contact-page *,
-  .contact-page *::before,
-  .contact-page *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-
-}
-/* ساعت متحرک بخش ساعات کاری */
 
 .animated-clock {
-  width: 35px;
-  height: 35px;
-  border: 2px solid var(--green);
-  border-radius: 50%;
   position: relative;
   flex-shrink: 0;
+  width: 35px;
+  height: 35px;
+  border: 2px solid #7a7449;
+  border-radius: 50%;
   background: #f8efdf;
 }
 
-/* عقربه ساعت‌شمار */
 .clock-hour-hand {
   position: absolute;
+  top: 50%;
+  left: 50%;
   width: 2px;
   height: 9px;
-  background: var(--green);
-  left: 50%;
-  top: 50%;
+  background: #7a7449;
   transform-origin: center bottom;
   transform: translate(-50%, -100%) rotate(0deg);
-animation: hourRotation 60s linear infinite;}
+  animation: hourRotation 60s linear infinite;
+}
 
-/* عقربه دقیقه‌شمار */
 .clock-minute-hand {
   position: absolute;
+  top: 50%;
+  left: 50%;
   width: 2px;
   height: 12px;
-  background: var(--green);
-  left: 50%;
-  top: 50%;
+  background: #7a7449;
   transform-origin: center bottom;
   transform: translate(-50%, -100%) rotate(0deg);
   animation: minuteRotation 15s linear infinite;
 }
 
-/* عقربه ثانیه‌شمار */
 .clock-second-hand {
   position: absolute;
+  top: 50%;
+  left: 50%;
   width: 1px;
   height: 14px;
-  background: #c98b4c;
-  left: 50%;
-  top: 50%;
+  background: #c8742f;
   transform-origin: center bottom;
   transform: translate(-50%, -100%) rotate(0deg);
   animation: secondRotation 3s steps(60) infinite;
 }
 
-/* مرکز عقربه‌ها */
 .clock-center {
   position: absolute;
+  top: 50%;
+  left: 50%;
   width: 5px;
   height: 5px;
-  background: var(--gold);
   border-radius: 50%;
-  left: 50%;
-  top: 50%;
+  background: #c8742f;
   transform: translate(-50%, -50%);
 }
 
@@ -1057,11 +843,15 @@ animation: hourRotation 60s linear infinite;}
     transform: translate(-50%, -100%) rotate(360deg);
   }
 }
-/* پین نقشه متحرک بخش محدوده فعالیت */
+
+/* =========================================
+   آیکون موقعیت مکانی متحرک
+========================================= */
+
 .animated-map-pin {
   display: inline-block;
   flex-shrink: 0;
-  color: var(--green);
+  color: #7a7449;
   font-size: 26px;
   transform-origin: center center;
   animation: mapPinSpin 6s linear infinite;
@@ -1071,7 +861,222 @@ animation: hourRotation 60s linear infinite;}
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   تبلت
+========================================= */
+
+@media (max-width: 1024px) {
+  .contact-info-grid {
+    gap: 12px;
+  }
+
+  .contact-main-section {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .contact-details-section {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-working-card {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+/* =========================================
+   موبایل
+========================================= */
+
+@media (max-width: 768px) {
+  .contact-hero {
+    min-height: 340px;
+  }
+
+  .contact-hero-overlay {
+    background: linear-gradient(
+      270deg,
+      rgba(38, 32, 18, 0.82) 0%,
+      rgba(38, 32, 18, 0.62) 65%,
+      rgba(38, 32, 18, 0.38) 100%
+    );
+  }
+
+  .contact-hero-content {
+    width: 100%;
+    padding: 55px 25px 75px;
+  }
+
+  .contact-hero-content p {
+    max-width: 440px;
+  }
+
+  .contact-info-section {
+    width: calc(100% - 36px);
+    margin-top: -20px;
+    padding-bottom: 22px;
+  }
+
+  .contact-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 34px 12px;
+  }
+
+  .contact-info-card {
+    min-height: 145px;
+    padding: 23px 9px 16px;
+  }
+
+  .contact-info-card h3 {
+    font-size: 14px;
+  }
+
+  .contact-info-card p {
+    font-size: 11.5px;
+  }
+
+  .contact-info-card > span {
+    font-size: 10.5px;
+  }
+
+  .contact-main-section,
+  .contact-details-section {
+    width: calc(100% - 36px);
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 8px;
+    padding-bottom: 16px;
+  }
+
+  .contact-map-wrapper,
+  .contact-map-wrapper iframe {
+    min-height: 270px;
+  }
+
+  .contact-form-wrapper {
+    padding: 20px 17px;
+  }
+
+  .contact-working-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .working-image {
+    height: 190px;
+    min-height: 190px;
+  }
+
+  .working-content {
+    padding: 20px;
+  }
+
+  .contact-area-card {
+    padding: 21px;
+  }
+
+  /* بنر پایانی در موبایل */
+
+  .contact-bottom-banner {
+    width: calc(100% - 36px);
+    min-height: 240px;
+    margin-bottom: 32px;
+  }
+
+  .contact-bottom-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .contact-bottom-content {
+    width: 100%;
+    min-height: 240px;
+    padding: 25px 22px;
+  }
+
+  .contact-bottom-content h2 {
+    font-size: 19px;
+  }
+
+  .contact-bottom-content p {
+    font-size: 12px;
+  }
+}
+
+/* =========================================
+   موبایل کوچک
+========================================= */
+
+@media (max-width: 480px) {
+  .contact-hero {
+    min-height: 320px;
+  }
+
+  .contact-hero-content {
+    padding: 48px 20px 68px;
+  }
+
+  .contact-hero-content h1 {
+    font-size: 33px;
+  }
+
+  .contact-hero-subtitle {
+    font-size: 15px;
+  }
+
+  .contact-hero-content p {
+    font-size: 12.5px;
+  }
+
+  .contact-hero-btn {
+    padding: 11px 23px;
+    font-size: 13px;
+  }
+
+  .contact-form-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .contact-map-wrapper,
+  .contact-map-wrapper iframe {
+    min-height: 245px;
+  }
+
+  .contact-bottom-content h2 {
+    font-size: 18px;
+  }
+
+  .contact-bottom-content p {
+    font-size: 12px;
+  }
+
+  .contact-bottom-content a {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+}
+
+/* =========================================
+   حفظ انیمیشن ساعت و موقعیت مکانی
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-page .reveal-item,
+  .contact-page .contact-hero-image img,
+  .contact-page .contact-info-card,
+  .contact-page .contact-info-icon,
+  .contact-page .working-image img,
+  .contact-page .contact-bottom-image img,
+  .contact-page .contact-area-card,
+  .contact-page .contact-submit-btn {
+    transition-duration: 0.01ms !important;
   }
 }
